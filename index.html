@@ -1,0 +1,658 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>English Monster World V21.1 — Expanded English Questions</title><style>*{box-sizing:border-box}body{margin:0;background:#101d2b;color:#fff;font-family:system-ui,sans-serif;overflow:hidden}#game{display:block;width:100vw;height:100dvh;touch-action:none}#hud{position:fixed;top:8px;left:8px;right:8px;display:flex;gap:6px;flex-wrap:wrap;pointer-events:none}.pill{background:#102638df;border:1px solid #9fc8b4;border-radius:18px;padding:6px 10px;font-size:12px}#controls{position:fixed;bottom:18px;left:16px;display:grid;grid-template-columns:repeat(3,53px);grid-template-rows:repeat(3,53px);gap:3px;touch-action:none}button{border:1px solid #d4e6cb;background:#254c55e8;color:white;border-radius:13px;font-size:19px;font-weight:bold;touch-action:none}button:active{background:#4d8a72}#action{position:fixed;bottom:43px;right:20px;width:85px;height:85px;border-radius:50%;background:#c18433}#menu{position:fixed;right:12px;top:65px;display:flex;gap:5px}#menu button{font-size:12px;padding:8px}#modal{position:fixed;inset:0;background:#06131dc9;display:none;align-items:center;justify-content:center;padding:16px;z-index:10}#panel{background:#183246;border:2px solid #7ec9ad;border-radius:20px;padding:19px;width:min(440px,100%);max-height:85dvh;overflow:auto;box-shadow:0 8px 35px #0009}#panel h2{margin:0 0 10px;font-size:22px}#panel p{line-height:1.6}#panel button{display:block;width:100%;margin:8px 0;padding:12px;font-size:15px;text-align:left}.small{font-size:12px;color:#bdd7df}#toast{position:fixed;top:115px;left:50%;transform:translateX(-50%);background:#172f43e8;padding:10px 15px;border-radius:12px;max-width:90vw;text-align:center;pointer-events:none;opacity:0;transition:opacity .2s}#start{position:fixed;inset:0;background:#102638;display:flex;align-items:center;justify-content:center;z-index:20;padding:20px}#start>div{max-width:440px;text-align:center}#start button{padding:15px 30px;background:#ad782e}#start h1{font-size:28px}#hint{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);font-size:11px;color:#e6f3e7;white-space:nowrap}@media(max-width:380px){#controls{transform:scale(.87);transform-origin:bottom left}#action{width:70px;height:70px}}#world{position:fixed;inset:0;overflow:hidden;background:#78b46d;z-index:0;touch-action:none}#world .tile{position:absolute;width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-size:25px;user-select:none}#world .tile i{font-style:normal;filter:drop-shadow(0 2px 1px #0003)}#world .actor{position:absolute;width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-size:35px;z-index:2;filter:drop-shadow(0 3px 2px #0006)}#hud,#controls,#action,#menu,#hint,#toast{z-index:5}#controls button{user-select:none;-webkit-user-select:none}#world .player{z-index:3}#minimap{position:fixed;right:12px;top:114px;width:145px;height:115px;z-index:5;border:2px solid #d2e6c3;border-radius:10px;background:#1d3847cc;image-rendering:pixelated}#world .label{position:absolute;top:-11px;font-size:10px;background:#153b34dd;color:white;padding:1px 4px;border-radius:6px;white-space:nowrap}
+/* V4: layered scenery and hand-drawn vector character art */
+#world .tile{font-size:0;overflow:hidden;border:1px solid #ffffff0a}
+#world .tile::before{content:"";position:absolute;inset:0;opacity:.32;background-image:radial-gradient(circle at 18% 24%,#fff9 0 2px,transparent 3px),radial-gradient(circle at 76% 72%,#163d2440 0 2px,transparent 3px);background-size:32px 30px}
+#world .tile i{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:100%;height:100%;filter:drop-shadow(0 3px 2px #0004)}
+#world .tile i svg{width:95%;height:95%}
+#world .actor{font-size:0;overflow:visible;filter:drop-shadow(0 5px 3px #0007)}
+#world .actor svg{width:46px;height:46px;overflow:visible}
+#world .player svg{animation:hero-bob .55s ease-in-out infinite alternate}
+@keyframes hero-bob{to{transform:translateY(-3px)}}
+#world .actor .label{top:-13px;font-size:10px}
+#panel .monster-art{display:block;width:112px;height:112px;margin:0 auto;filter:drop-shadow(0 7px 5px #0007)}
+#panel .monster-art svg{width:100%;height:100%}
+#start{background:radial-gradient(circle at 50% 35%,#34765c,#0b2134 78%)}
+#start h1{color:#e9ffdb;text-shadow:0 3px 0 #164d3c,0 6px 15px #0009}
+#hud .pill{backdrop-filter:blur(5px)}
+
+/* V5: faux-3D elevation, directional shadows and distinct silhouettes */
+#world .tile{overflow:visible;border:0}
+#world .tile::before{opacity:.2}
+#world .tile i{overflow:visible}
+#world .tile i svg{filter:drop-shadow(1px 7px 2px #183f3155);transform:translateY(-7px) scale(1.1);transform-origin:bottom center}
+#world .tile[data-kind="path"]{box-shadow:inset 0 3px 0 #fff3,inset 0 -3px 0 #65481e24}
+#world .tile[data-kind="town"]{box-shadow:inset 0 2px 0 #fff3}
+#world .tile[data-kind="water"]{box-shadow:inset 0 5px 0 #267aa5aa,inset 0 -3px 0 #b3f7ff55}
+#world .actor{filter:drop-shadow(4px 9px 3px #172c2a99)}
+#world .actor svg{height:53px;width:53px;transform:translateY(-9px);filter:drop-shadow(0 3px 1px #0003)}
+#world .player svg{animation:hero-bob .55s ease-in-out infinite alternate}
+#panel .monster-art{width:145px;height:145px}
+#panel .monster-art svg{filter:drop-shadow(3px 9px 3px #0006)}
+#world .tile i .house{transform:translateY(-8px)}
+
+/* V5.1 genuine isometric projection: diamond terrain, visible vertical faces, depth ordering */
+#world{background:linear-gradient(160deg,#8abda0,#3d7668);perspective:none}
+#world .iso-ground{position:absolute;width:64px;height:32px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);border:0;box-shadow:none!important;overflow:hidden;transform:none}
+#world .iso-ground:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,#ffffff32,transparent 55%,#15251d22);opacity:1}
+#world .iso-ground[data-kind="path"]{background:#d7b783!important}
+#world .iso-ground[data-kind="water"]{background:#48a9d4!important}
+#world .iso-face{position:absolute;pointer-events:none;clip-path:polygon(0 0,50% 50%,50% 100%,0 50%);background:#526b58;opacity:.75}
+#world .iso-object{position:absolute;width:64px;height:80px;pointer-events:none;display:flex;align-items:flex-end;justify-content:center;filter:drop-shadow(7px 8px 3px #10271f75)}
+#world .iso-object svg{width:68px;height:76px;overflow:visible;transform:none!important;filter:none!important}
+#world .iso-object.house{height:96px}
+#world .iso-object.house svg{width:92px;height:100px}
+#world .iso-actor{position:absolute;width:64px;height:70px;display:flex;align-items:flex-end;justify-content:center;filter:drop-shadow(5px 8px 3px #122c2380);pointer-events:none}
+#world .iso-actor svg{width:59px;height:63px;transform:none!important;animation:none!important;overflow:visible}
+#world .iso-actor.player svg{animation:hero-bob .5s ease-in-out infinite alternate!important}
+#world .iso-actor .label{top:-4px;left:50%;transform:translateX(-50%)}
+#world .iso-object.terrain-cliff{filter:drop-shadow(4px 8px 2px #1c232b88)}#world .iso-object.terrain-bridge{filter:drop-shadow(3px 5px 2px #1c232b66)}#world .iso-object.terrain-river{filter:none}#minimap{top:115px;width:132px;height:104px}
+#menu{top:65px}
+#world .iso-actor.companion{pointer-events:none;filter:drop-shadow(1px 3px 2px #142e3466)}#world .iso-actor.companion svg{animation:hero-bob .65s ease-in-out infinite alternate}#ride{position:fixed;right:22px;bottom:139px;z-index:6;min-width:88px;min-height:45px;font-size:14px;background:#3a6480;border:2px solid #cdecc5;padding:8px}#world .iso-actor.mount{filter:drop-shadow(5px 10px 4px #112b2877)}#world .iso-actor.mount svg{width:76px;height:80px}#world .iso-actor.mount .rider{position:absolute;left:24px;top:-15px;width:25px;height:35px;z-index:2;filter:drop-shadow(1px 2px 2px #0008)}#world .iso-actor.companion .label{font-size:10px;white-space:nowrap;top:-8px}#scene3d{position:fixed;inset:0;width:100vw;height:100dvh;display:block;touch-action:none;background:#9acbd7}#world{background:transparent!important;pointer-events:none}#world .iso-actor{filter:drop-shadow(2px 4px 3px #0009)}#cameraHelp{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);font-size:11px;z-index:6;background:#0a2d3cbb;border-radius:12px;padding:4px 9px;white-space:nowrap}#hint{display:none}#camReset{position:fixed;left:12px;top:65px;z-index:6;font-size:12px;padding:8px}#cameraHelp{pointer-events:none}@media(max-width:520px){#menu{top:52px}#minimap{top:102px;width:100px;height:83px}#camReset{top:52px}} #discoveryReward{position:fixed;top:18%;left:50%;transform:translate(-50%,-12px);z-index:20;pointer-events:none;opacity:0;background:linear-gradient(135deg,#123a4c,#285e51);border:2px solid #ffdc76;border-radius:16px;color:#fff5ba;font-size:17px;font-weight:bold;text-align:center;padding:14px 20px;box-shadow:0 8px 28px #0008;max-width:88vw}#discoveryReward.reward-show{animation:discovery-pop 3.2s ease-out forwards}@keyframes discovery-pop{0%{opacity:0;transform:translate(-50%,-20px) scale(.88)}12%{opacity:1;transform:translate(-50%,0) scale(1.04)}20%,78%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-8px) scale(1)}} .room3d{position:relative;height:190px;overflow:hidden;border-radius:14px;background:linear-gradient(#a9d9d0 0 60%,#b68c66 60%);border:2px solid #8ed4c3;perspective:260px;margin:10px 0 14px}.room3d.heal{background:linear-gradient(#c4eee6 0 60%,#b1c6ac 60%)}.room3d.lab{background:linear-gradient(#b9b5e2 0 60%,#9b9cba 60%)}.room-back{position:absolute;left:15%;right:15%;top:10px;height:108px;background:#ffffff55;border:3px solid #ffffff99;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;color:#183d47;border-radius:6px}.room-back span{font-size:37px}.room-back strong{font-size:17px}.room-floor{position:absolute;left:-30%;right:-30%;bottom:-56px;height:135px;background:repeating-linear-gradient(90deg,#ffffff15 0 3px,transparent 3px 55px),linear-gradient(#9e745a,#765543);transform:rotateX(56deg)}.room-counter{position:absolute;bottom:17px;left:13%;right:13%;background:#294e57;color:white;border:3px solid #e2c591;padding:9px 4px;border-radius:8px;text-align:center;font-size:13px;font-weight:bold;box-shadow:0 8px 0 #132b34}  .guardian-portrait .monster-art{display:inline-block;width:120px;height:120px}.guardian-portrait svg{width:120px;height:120px;max-width:100%}</style><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#142d49"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="./icon-192.png"></head><body><canvas id="scene3d" aria-label="3D冒険マップ"></canvas><div id="world" aria-label="モンスター表示"></div><canvas id="game" style="display:none"></canvas><div id="hud"><span class="pill" id="zone">🌿 ひかりの草原</span><span class="pill" id="stats"></span><span class="pill" id="coins"></span></div><div id="menu"><button onclick="showStory()">📜 物語</button><button onclick="showParty()">仲間</button><button onclick="showBag()">持ち物</button><button onclick="showEnglishSettings()">📚 英語設定</button><button onclick="showHelp()">遊び方</button></div><div id="controls"><span></span><button data-dir="up">▲</button><span></span><button data-dir="left">◀</button><span></span><button data-dir="right">▶</button><span></span><button data-dir="down">▼</button><span></span></div><button id="action">調べる</button><button id="camReset" onclick="cameraYaw=.72;cameraPitch=.65;cameraDistance=15;renderWorld()">🎥 視点</button><div id="cameraHelp">画面ドラッグ：視点回転 ｜ 2本指：ズーム ｜ 3Dキャラ</div><button id="ride" onclick="toggleRide()">🐾 乗る</button><div id="hint">移動して人やモンスターに近づこう</div><canvas id="minimap" width="224" height="176" aria-label="ミニマップ"></canvas><div id="toast"></div><div id="discoveryReward" aria-live="polite"></div><div id="modal"><div id="panel"></div></div><div id="start"><div><h1>🌎 ENGLISH<br>MONSTER WORLD V21.2</h1><p>3Dの町にショップ・回復センター・研究所が登場！<br>進化した仲間に乗って走ろう・飛ぼう・泳ごう！</p><p class="small">スマホ：方向ボタン / 乗る / 調べる　PC：矢印キー・WASD / R<br>音声は端末の読み上げ機能を使用します。</p><button onclick="document.getElementById('start').remove();sayToast('📜 物語でボスの場所と進行を確認しよう！')">冒険を始める ▶</button></div></div><script>
+const cv=document.getElementById('game');let W=innerWidth,H=innerHeight,scale=1;function resize(){W=innerWidth;H=innerHeight;renderWorld()}addEventListener('resize',resize);
+const TILE=44,MW=136,MH=108;let map=[];let seed=1442;function rand(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}for(let y=0;y<MH;y++){map[y]=[];for(let x=0;x<MW;x++){let t='grass';if(x<16&&y<15)t='town';else if(x>35&&y<25)t='forest';else if(x<25&&y>30)t='lake';else if(x>43&&y>32)t='mountain';if(x>68&&y<35)t='snow';if(x>73&&y>55)t='volcano';if(x<39&&y>54)t='ruins';if(t==='lake'&&((x-11)**2/150+(y-38)**2/45)<1)t='water';if(t==='mountain'&&rand()<.3)t='rock';if(t==='forest'&&rand()<.23)t='tree';if(t==='grass'&&rand()<.08)t='flower';if(t==='snow'&&rand()<.13)t='snowtree';if(t==='volcano'&&rand()<.11)t='lava';if(t==='ruins'&&rand()<.12)t='pillar';map[y][x]=t}}// V7: new connected landscapes, preserving all previous world coordinates.
+for(let y=1;y<MH-1;y++)for(let x=1;x<MW-1;x++){
+ if(x>=112){let t=y<30?'crystal':y<60?'mushroom':y<82?'desert':'meadow';map[y][x]=t;
+ if(t==='crystal'&&rand()<.12)map[y][x]='crystalrock';
+ if(t==='mushroom'&&rand()<.13)map[y][x]='giantmushroom';
+ if(t==='desert'&&rand()<.1)map[y][x]='cactus';
+ if(t==='meadow'&&rand()<.13)map[y][x]='sunflower';
+ }else if(y>=88){let t=x<43?'meadow':x<83?'desert':'mushroom';map[y][x]=t;
+ if(t==='meadow'&&rand()<.1)map[y][x]='sunflower';
+ if(t==='desert'&&rand()<.1)map[y][x]='cactus';
+ if(t==='mushroom'&&rand()<.1)map[y][x]='giantmushroom';
+ }
+}
+for(let x=94;x<135;x++){map[48][x]='path';map[49][x]='path'}
+for(let y=48;y<107;y++){map[y][94]='path';map[y][95]='path'}
+for(let y=6;y<106;y++){map[y][121]='path';map[y][122]='path'}
+for(let x=20;x<135;x++){map[95][x]='path';map[96][x]='path'}
+for(let x=2;x<107;x++){map[17][x]='path';map[18][x]='path'}for(let y=5;y<83;y++){map[y][20]='path';map[y][21]='path'}for(let y=17;y<83;y++){map[y][62]='path';map[y][63]='path'}for(let x=20;x<105;x++){map[48][x]='path';map[49][x]='path'}for(let y=18;y<79;y++){map[y][94]='path'}for(let x=2;x<14;x++)for(let y=4;y<12;y++)map[y][x]='town';
+// V6 terrain landmarks: walkable bridges and stairs, raised cliffs and waterfalls.
+const terrainFeatures=new Map();
+function feature(x,y,kind){if(x>=1&&y>=1&&x<MW-1&&y<MH-1)terrainFeatures.set(x+','+y,kind)}
+// River crossing the main east-west trail. Bridge is traversable.
+for(let y=38;y<=59;y++)for(let x=48;x<=50;x++){map[y][x]='water';feature(x,y,'river')}
+for(let y=48;y<=49;y++)for(let x=47;x<=51;x++){map[y][x]='path';feature(x,y,'bridge')}
+// Elevated escarpment, a staircase corridor connects the lower and upper plateau.
+for(let y=31;y<=42;y++)for(let x=65;x<=79;x++){
+ if(y===31||x===65||x===79){map[y][x]='cliff';feature(x,y,'cliff')}
+ else if(map[y][x]!=='path'&&!['rock','tree','lava','pillar','snowtree','crystalrock','giantmushroom','cactus'].includes(map[y][x]))feature(x,y,'plateau');
+}
+for(let y=36;y<=40;y++){map[y][65]='path';feature(65,y,'stairs')}
+for(let x=69;x<=74;x++){map[31][x]='water';feature(x,31,'waterfall')}
+// Additional waterfall by the western lake, with a bridge leading across the stream.
+for(let y=34;y<=42;y++){map[y][26]='water';feature(26,y,y<=36?'waterfall':'river')}
+for(let x=24;x<=28;x++){map[39][x]='path';feature(x,39,'bridge')}
+const types=[{name:'リーフィ',emoji:'🌱',color:'#75cf78',hp:36,atk:9,evo:'フォレストン',eemoji:'🌳'},{name:'フレミィ',emoji:'🔥',color:'#ef9755',hp:30,atk:12,evo:'ブレイズドラ',eemoji:'🐉'},{name:'アクア',emoji:'💧',color:'#6fbde9',hp:38,atk:8,evo:'オーシャンガード',eemoji:'🐲'},{name:'スパーク',emoji:'⚡',color:'#f7d969',hp:32,atk:11,evo:'サンダーロード',eemoji:'🦁'},{name:'フロスティ',emoji:'❄️',color:'#a5d9ef',hp:35,atk:10,evo:'アイスフェンリル',eemoji:'🐺'},{name:'クリスタ',emoji:'💎',color:'#a18bff',hp:42,atk:9,evo:'クリスタリオン',eemoji:'💠'},{name:'キノポン',emoji:'🍄',color:'#e988ae',hp:44,atk:7,evo:'マッシュキング',eemoji:'👑'},{name:'サンドラ',emoji:'🏜️',color:'#e7bb65',hp:39,atk:10,evo:'デザートドラゴン',eemoji:'🐲'},{name:'サンバード',emoji:'🌻',color:'#f9cb53',hp:33,atk:12,evo:'ソーラーフェニックス',eemoji:'🦅'},{name:'コメット',emoji:'🌠',color:'#78d9bd',hp:36,atk:12,evo:'スターホーン',eemoji:'🦄'}];const makeMon=(id,level=1)=>({id,level,xp:0,hp:types[id].hp+level*3,maxhp:types[id].hp+level*3,evolved:false});const fresh={x:8,y:8,coins:60,balls:5,party:[makeMon(0)],wins:0,seen:[],quests:0,discovered:[]};let save;try{save=JSON.parse(localStorage.getItem('emw_v2_save'))}catch{}let state={...fresh,...save};if(!Number.isFinite(state.x)||!Number.isFinite(state.y)||!Array.isArray(state.party)||!state.party.length){state=JSON.parse(JSON.stringify(fresh))}state.x=Math.max(1,Math.min(MW-2,Math.round(state.x)));state.y=Math.max(1,Math.min(MH-2,Math.round(state.y)));if(!Array.isArray(state.discovered))state.discovered=[];function persist(){try{localStorage.setItem('emw_v2_save',JSON.stringify(state))}catch{}}let entities=[{x:9,y:7,kind:'npc',name:'先生',icon:'👩‍🏫'},{x:5,y:11,kind:'npc',name:'商人',icon:'🧑‍💼'},{x:14,y:8,kind:'npc',name:'旅人',icon:'🧑‍🦱'},{x:77,y:18,kind:'npc',name:'雪原の研究者',icon:'🧑‍🔬'},{x:91,y:66,kind:'npc',name:'火山の守り人',icon:'🧙'},{x:27,y:68,kind:'npc',name:'遺跡の考古学者',icon:'👩‍🎓'},{x:62,y:48,kind:'npc',name:'道案内人',icon:'🧭'},{x:123,y:18,kind:'npc',name:'宝石研究員',icon:'💎'},{x:125,y:49,kind:'npc',name:'キノコ博士',icon:'🍄'},{x:125,y:73,kind:'npc',name:'砂漠の旅人',icon:'🏜️'},{x:35,y:99,kind:'npc',name:'花畑の園芸家',icon:'🌻'}];for(let i=0;i<190;i++){let x=16+Math.floor(rand()*118),y=4+Math.floor(rand()*102);if(!['water','rock','tree','lava','pillar','snowtree','crystalrock','giantmushroom','cactus'].includes(map[y][x]))entities.push({x,y,kind:'wild',id:Math.floor(rand()*10),alive:true})}// V15: three chapter bosses. Boss progress is saved separately from random wild encounters.
+// Legendary guardians are separate, collectible monster species.
+types.push(
+ {name:'グランリーフ',emoji:'🌳',color:'#278e60',hp:85,atk:18,evo:'グランリーフ',eemoji:'🌳'},
+ {name:'フロストキング',emoji:'❄️',color:'#91e8ff',hp:92,atk:20,evo:'フロストキング',eemoji:'❄️'},
+ {name:'ヴォルカノス',emoji:'🌋',color:'#f15a38',hp:105,atk:23,evo:'ヴォルカノス',eemoji:'🔥'}
+);
+const legendaryNames=['グランリーフ','フロストキング','ヴォルカノス'];
+const bossChapters=[
+ {id:'forest',name:'🌲 森の守護獣・グランリーフ',zone:'ささやきの森',x:48,y:16,monster:10,hp:76,reward:60,chapter:'第1章：森のささやき',intro:'The forest needs your help.',jp:'森があなたの助けを必要としている。',ending:'森の結界が解け、雪原の守護者への道が開かれた！'},
+ {id:'snow',name:'❄️ 氷の王・フロストキング',zone:'しろがね雪原',x:82,y:18,monster:11,hp:108,reward:90,chapter:'第2章：凍てつく約束',intro:'Be brave and follow the light.',jp:'勇気を出して光を追って。',ending:'雪原の封印が解け、火山の最終決戦が始まる！'},
+ {id:'volcano',name:'🌋 炎の竜王・ヴォルカノス',zone:'ほのおの火山',x:94,y:69,monster:12,hp:145,reward:150,chapter:'第3章：炎の竜王',intro:'You have the power to protect this world.',jp:'あなたにはこの世界を守る力がある。',ending:'三つの守護石が輝き、モンスターワールドに平和が戻った！'}
+];
+if(!state.bossWins||typeof state.bossWins!=='object')state.bossWins={};
+if(!state.bossClaimed||typeof state.bossClaimed!=='object')state.bossClaimed={};
+function grantGuardian(i){const b=bossChapters[i],id=b.monster;if(state.bossClaimed[b.id]||state.party.some(m=>m.id===id)){state.bossClaimed[b.id]=true;return false;}state.party.push({id,level:5,xp:0,hp:types[id].hp,maxhp:types[id].hp,evolved:true});state.bossClaimed[b.id]=true;return true;}
+for(let i=0;i<bossChapters.length;i++)if(state.bossWins[bossChapters[i].id])grantGuardian(i);
+
+function bossAvailable(i){return i===0||!!state.bossWins[bossChapters[i-1].id]}
+function placeBosses(){for(let i=0;i<bossChapters.length;i++){const b=bossChapters[i];let found=false;for(let r=0;r<=12&&!found;r++)for(let dy=-r;dy<=r&&!found;dy++)for(let dx=-r;dx<=r;dx++){let x=b.x+dx,y=b.y+dy;if(x>1&&y>1&&x<MW-2&&y<MH-2&&!blocked(x,y)&&!entities.some(e=>e.x===x&&e.y===y)){entities.push({x,y,kind:'boss',bossIndex:i,id:b.monster,alive:true,facing:0});found=true;break}}}}
+// Bosses are placed after the town facilities have been initialized.
+let bossBattle=null;
+function showStory(){let done=bossChapters.filter(b=>state.bossWins[b.id]).length;modal('📜 守護石の物語',`<p>世界を守る3つの守護石が失われた。英語の力と仲間のモンスターで、地域の守護者に挑もう！</p><p><b>進行状況：${done}/3章</b></p>`+bossChapters.map((b,i)=>`<p>${state.bossWins[b.id]?'✅':bossAvailable(i)?'⚔️':'🔒'} <b>${b.chapter}</b><br>${b.name}<br><small>${state.bossWins[b.id]?'クリア済み':bossAvailable(i)?'ボスの近くまで案内できます':'前の章をクリアすると解放'}　報酬：🪙${b.reward}</small><br>${bossAvailable(i)&&!state.bossWins[b.id]?btn('📍 ボスの近くへ移動','guideToBoss('+i+')'):''}</p>`).join('')+btn('冒険に戻る','closeGameModal()'))}
+function guideToBoss(i){
+ if(!bossAvailable(i)){sayToast('前の章をクリアしてね');return}
+ const e=entities.find(e=>e.kind==='boss'&&e.bossIndex===i);
+ if(!e){sayToast('ボスの配置が見つかりません');return}
+ // Choose a safe tile directly next to the boss so 調べる works immediately.
+ const candidates=[[1,0],[-1,0],[0,1],[0,-1],[2,0],[-2,0],[0,2],[0,-2]];
+ const dest=candidates.map(([dx,dy])=>({x:e.x+dx,y:e.y+dy})).find(p=>!blocked(p.x,p.y)&&!entities.some(q=>q.kind==='boss'&&q!==e&&q.x===p.x&&q.y===p.y));
+ if(!dest){sayToast('ボスの近くに安全な場所がありません');return}
+ closeGameModal();mounted=false;state.x=dest.x;state.y=dest.y;
+ followTrail=Array.from({length:5},()=>({x:state.x,y:state.y}));
+ discoverZone();persist();updateRideButton();renderWorld();
+ sayToast('👑 '+bossChapters[i].name+'の近くに到着！「調べる」を押してね');
+}
+function meetBoss(e){const b=bossChapters[e.bossIndex];if(state.bossWins[b.id]){modal('✨ '+b.name,`<p>この守護者とはすでに和解しているよ。</p>${btn('戻る','closeGameModal()')}`);return}if(!bossAvailable(e.bossIndex)){modal('🔒 封印された守護者',`<p>先に前の章のボスを倒そう！</p>${btn('戻る','closeGameModal()')}`);return}modal('📖 '+b.chapter,`<p>${b.name} が現れた！</p><p><b>“${b.intro}”</b><br>${b.jp}</p><p>英語の問題に答えて、守護石を取り戻そう。</p>${btn('⚔️ ボスに挑戦','startBossBattle('+e.bossIndex+')')}${btn('いったん戻る','closeGameModal()')}`)}
+function startBossBattle(i){const b=bossChapters[i];if(!bossAvailable(i)||state.bossWins[b.id])return;bossBattle={i,hp:b.hp,max:b.hp};bossBattleScreen()}
+function bossBattleScreen(message=''){if(!bossBattle)return;const b=bossChapters[bossBattle.i],p=state.party[0];modal('👑 '+b.name,`<div style="text-align:center"><div class="guardian-portrait">${monsterPanelArt(b.monster,true)}</div></div><p><b>ボス HP：${Math.max(0,bossBattle.hp)} / ${bossBattle.max}</b><br>仲間 ${types[p.id].name} HP ${p.hp}/${p.maxhp}</p><p>${message||'英語クイズに正解すると攻撃できる！'}</p>${btn('🎧 英語で攻撃','bossAttack()')}${btn('💚 仲間を励ます（HP +8）','bossHeal()')}${btn('🏃 あとで挑戦','bossRetreat()')}`)}
+function bossAttack(){if(!bossBattle)return;quiz(()=>{if(!bossBattle)return;const p=state.party[0];bossBattle.hp-=14+p.level*4;if(bossBattle.hp<=0){winBoss();return}p.hp=Math.max(1,p.hp-5);persist();bossBattleScreen('英語に正解！ ダメージを与えた！')})}
+function bossHeal(){if(!bossBattle)return;let p=state.party[0];p.hp=Math.min(p.maxhp,p.hp+8);persist();bossBattleScreen('仲間のHPが回復した！')}
+function bossRetreat(){bossBattle=null;closeGameModal()}
+function winBoss(){const b=bossChapters[bossBattle.i];state.bossWins[b.id]=true;state.coins=(Number(state.coins)||0)+b.reward;let p=state.party[0];p.xp+=35;if(p.xp>=p.level*25){p.xp=0;p.level++;p.maxhp+=5;p.hp=p.maxhp;if(p.level>=4)p.evolved=true}const recruited=grantGuardian(bossBattle.i);persist();bossBattle=null;modal('🏆 '+b.chapter+' クリア！',`<p><b>${b.ending}</b></p><p>🪙 コイン +${b.reward}　✨ 経験値 +35</p><p><b>🐉 ${b.name.split('・').pop()}が仲間になった！</b></p><p>仲間一覧で先頭にすると、一緒に冒険できるよ。</p><p>${Object.keys(state.bossWins).filter(k=>state.bossWins[k]).length===3?'🎊 全3章クリア！ おめでとう！':'次のボスが解放された！'}</p>${btn('📜 物語を確認','showStory()')}${btn('冒険に戻る','closeGameModal()')}`)}
+let keys={},cool=0,active=false,battle=null,toastTime=0;
+// Recent player positions drive the companion, keeping it behind the hero.
+// V10: mount system. Flying and swimming require an evolved compatible companion.
+let mounted=false;
+function mountMode(mon){if(!mon||!mon.evolved)return null;return [1,8].includes(mon.id)?'fly':mon.id===2?'swim':'run'}
+function updateRideButton(){const b=document.getElementById('ride');if(!b)return;const m=state.party[0],mode=mountMode(m);b.textContent=mounted?'↘ 降りる':mode==='fly'?'🪽 飛ぶ':mode==='swim'?'🌊 乗る':mode==='run'?'🐾 乗る':'🔒 乗る';b.title=mode?'進化した仲間に乗る':'先頭の仲間をレベル4まで育てよう'}
+function toggleRide(){if(active)return;const m=state.party[0],mode=mountMode(m);if(mounted){if(blocked(state.x,state.y)){sayToast('ここでは降りられない！安全な地面へ移動してね');return}mounted=false;sayToast('モンスターから降りたよ');}else if(!mode){sayToast('乗るには先頭のモンスターをレベル4に進化させよう！');return}else{mounted=true;sayToast(mode==='fly'?'🪽 空を飛べる！':mode==='swim'?'🌊 水の上を進める！':'🐾 速く走れる！')}followTrail=Array.from({length:5},()=>({x:state.x,y:state.y}));updateRideButton();renderWorld()}
+function canTravel(x,y){if(x<1||y<1||x>=MW-1||y>=MH-1)return false;const t=map[y][x],mode=mounted?mountMode(state.party[0]):null;if(mode==='fly')return t!=='lava';if(mode==='swim')return !['rock','tree','lava','pillar','snowtree','cliff','crystalrock','giantmushroom','cactus'].includes(t);return !blocked(x,y)}
+let followTrail=Array.from({length:5},()=>({x:state.x,y:state.y}));
+function companionPosition(){return followTrail[Math.min(2,followTrail.length-1)]||{x:state.x,y:state.y}}
+function isGrassyTile(x,y){const t=map[y]?.[x];return ['grass','forest','flower','meadow','sunflower'].includes(t)}function sayToast(s){const t=document.getElementById('toast');t.textContent=s;t.style.opacity=1;clearTimeout(toastTime);toastTime=setTimeout(()=>t.style.opacity=0,2500)}function speak(s){if('speechSynthesis'in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(s);u.lang='en-US';u.rate=.82;speechSynthesis.speak(u)}else sayToast('この端末は音声読み上げに対応していません')}function zone(){let x=state.x,y=state.y;return x>=112&&y<30?'💎 クリスタル渓谷':x>=112&&y<60?'🍄 キノコの森':x>=112&&y<82?'🏜️ きらめき砂漠':x>=112?'🌻 太陽の花畑':y>=88&&x<43?'🌻 太陽の花畑':y>=88&&x<83?'🏜️ きらめき砂漠':y>=88?'🍄 キノコの森':x>68&&y<35?'❄️ しろがね雪原':x>73&&y>55?'🌋 ほのおの火山':x<39&&y>54?'🏛️ 古代遺跡':x<16&&y<15?'🏘️ はじまりの町':x>35&&y<25?'🌲 ささやきの森':x<25&&y>30?'💧 みずうみ':x>43&&y>32?'⛰️ いわやま':'🌿 ひかりの草原'}function blocked(x,y){if(typeof townFacilities!=='undefined'&&townFacilities.some(b=>b.x===x&&b.y===y))return true;return x<1||y<1||x>=MW-1||y>=MH-1||['water','rock','tree','lava','pillar','snowtree','cliff','crystalrock','giantmushroom','cactus'].includes(map[y][x])}// Smooth visual motion; grid coordinates remain authoritative for collision, battles and saves.
+const motion={hero:null,entities:new WeakMap(),follower:null};
+function tweenPosition(oldX,oldY,newX,newY,duration){return {fromX:oldX,fromY:oldY,toX:newX,toY:newY,start:performance.now(),duration}}
+function tweenPoint(t,now){if(!t)return null;const u=Math.max(0,Math.min(1,(now-t.start)/t.duration));const q=u*u*(3-2*u);return {x:t.fromX+(t.toX-t.fromX)*q,y:t.fromY+(t.toY-t.fromY)*q,done:u>=1}}
+let visualHero={x:0,y:0},visualNow=0;
+function currentHeroPoint(){const p=tweenPoint(motion.hero,performance.now());return p||{x:state.x,y:state.y}}
+function move(dx,dy){if(active)return;let nx=state.x+dx,ny=state.y+dy;if(canTravel(nx,ny)){heroFacing=facingFor(dx,dy);heroLastStep=performance.now();companionFacing=heroFacing;companionLastStep=heroLastStep;const oldHero=currentHeroPoint();motion.hero=tweenPosition(oldHero.x,oldHero.y,nx,ny,mounted?120:240);
+const previousFollowerVisual=tweenPoint(motion.follower,performance.now())||companionPosition();const followerGoal=companionPosition();motion.follower=tweenPosition(previousFollowerVisual.x,previousFollowerVisual.y,followerGoal.x,followerGoal.y,mounted?140:275);
+followTrail.unshift({x:state.x,y:state.y});if(followTrail.length>5)followTrail.pop();const delayedGoal=companionPosition();motion.follower.toX=delayedGoal.x;motion.follower.toY=delayedGoal.y;state.x=nx;state.y=ny;discoverZone();persist();renderWorld();const e=entities.find(e=>e.alive!==false&&e.kind==='wild'&&e.x===nx&&e.y===ny);if(e){startBattle(e);return}if(!mounted&&isGrassyTile(nx,ny)&&rand()<.016&&!(nx<16&&ny<15))sayToast('草むらが揺れている…')}}function discoverZone(){const z=zone();if(!Array.isArray(state.discovered))state.discovered=[];if(!state.discovered.includes(z)){state.discovered.push(z);state.coins=(Number(state.coins)||0)+15;persist();const badge=document.getElementById('discoveryReward');if(badge){badge.textContent='🗺️ '+z+' 発見！  🪙 +15コイン';badge.classList.remove('reward-show');void badge.offsetWidth;badge.classList.add('reward-show')}const coinEl=document.getElementById('coins');if(coinEl)coinEl.textContent='🪙 '+state.coins+' 🔮 '+state.balls;}}// V14: accessible town facilities, placed away from the starting point.
+const townFacilities=[
+ {id:'shop',x:4,y:5,doorX:4,doorY:7,name:'モンスターショップ',emoji:'🛒',color:'#d9a25e'},
+ {id:'heal',x:11,y:5,doorX:11,doorY:7,name:'回復センター',emoji:'💚',color:'#79c8b9'},
+ {id:'lab',x:11,y:11,doorX:11,doorY:13,name:'モンスター研究所',emoji:'🔬',color:'#a6a4e8'}
+];
+function nearbyFacility(){return townFacilities.find(b=>Math.abs(state.x-b.doorX)+Math.abs(state.y-b.doorY)<=2)}
+function enterFacility(id){
+ const b=townFacilities.find(b=>b.id===id);if(!b)return;
+ const art=`<div class="room3d ${b.id}"><div class="room-back"><span>${b.emoji}</span><strong>${b.name}</strong></div><div class="room-floor"></div><div class="room-counter">${b.id==='shop'?'🔮 捕獲玉・冒険用品':b.id==='heal'?'💚 モンスターの回復':'📖 モンスター図鑑・研究'}</div></div>`;
+ const actions=b.id==='shop'?`<p>🔮 捕獲玉：20コイン / 個</p>${btn('🔮 捕獲玉を1個買う','buyFacilityBall()')}${btn('🔮 捕獲玉を3個買う','buyFacilityBalls(3)')}`:
+ b.id==='heal'?`<p>仲間のHPを全回復します。</p>${btn('💚 全員を無料で回復','healFacility()')}`:
+ `<p>捕まえた仲間を研究しよう！ 英語クエストでコインと経験値を獲得できます。</p>${btn('🐉 仲間の図鑑を見る','showParty()')}${btn('🎧 英語研究クエスト','teacherQuiz()')}`;
+ modal(b.emoji+' '+b.name,art+`<p class="small">🪙 所持コイン：${state.coins}　🔮 捕獲玉：${state.balls}</p>`+actions+btn('🚪 建物から出る','closeGameModal()'));
+}
+function buyFacilityBalls(n){const cost=20*n;if(state.coins<cost){sayToast('コインが足りないよ');return}state.coins-=cost;state.balls+=n;persist();enterFacility('shop')}
+function buyFacilityBall(){buyFacilityBalls(1)}
+function healFacility(){for(const m of state.party)m.hp=m.maxhp;persist();enterFacility('heal');sayToast('💚 仲間が元気になった！')}
+function near(){return entities.filter(e=>e.alive!==false&&Math.abs(e.x-state.x)+Math.abs(e.y-state.y)<=2).sort((a,b)=>(Math.abs(a.x-state.x)+Math.abs(a.y-state.y))-(Math.abs(b.x-state.x)+Math.abs(b.y-state.y)))[0]}function interact(){if(active)return;const b=nearbyFacility();if(b){enterFacility(b.id);return}let e=near();if(!e){sayToast('近くに人やモンスターがいないよ');return}if(e.kind==='wild')startBattle(e);else if(e.kind==='boss')meetBoss(e);else npc(e)}function modal(title,body){keys={};active=true;document.getElementById('panel').innerHTML='<h2>'+title+'</h2>'+body;document.getElementById('modal').style.display='flex'}function closeGameModal(){keys={};active=false;document.getElementById('modal').style.display='none';battle=null;bossBattle=null;persist()}function btn(label,action){return `<button onclick="${action}">${label}</button>`}const englishBank={
+ easy:[
+ ['vocab','cat','「猫」は英語で？',['cat','dog','bird'],0,'cat = 猫'],['vocab','water','「水」は英語で？',['fire','water','tree'],1,'water = 水'],['vocab','morning','「朝」は英語で？',['night','evening','morning'],2,'morning = 朝'],['meaning','The fox is red.','キツネは何色？',['青','赤','緑'],1,'The fox is red. = キツネは赤い'],['meaning','I have two apples.','リンゴはいくつ？',['2個','3個','1個'],0,'two = 2'],['meaning','Open the door.','何をする？',['窓を閉める','走る','ドアを開ける'],2,'open = 開ける'],['blank','I ___ happy.','空欄に入る言葉は？',['are','am','is'],1,'I am happy.'],['blank','She ___ a dog.','空欄に入る言葉は？',['has','have','having'],0,'She has a dog.'],['grammar','He ___ my friend.','正しい英文にするには？',['am','are','is'],2,'He is my friend.'],['talk','How are you?','自然な返事は？',['I am fine.','At school.','It is blue.'],0,'How are you? = 元気ですか？'],['talk','Thank you!','自然な返事は？',['Good night.','You are welcome.','I am ten.'],1,'You are welcome. = どういたしまして'],['listen','Turn right.','聞こえた指示は？',['左に曲がる','止まる','右に曲がる'],2,'Turn right. = 右に曲がって']
+ ],
+ normal:[
+ ['meaning','The monster is behind the tree.','モンスターはどこ？',['木の前','木の後ろ','木の上'],1,'behind = 後ろ'],['meaning','Turn left at the bridge.','どちらへ曲がる？',['右','まっすぐ','左'],2,'turn left = 左に曲がる'],['meaning','I am looking for my friend.','何を探している？',['友達','家','食べ物'],0,'look for = 探す'],['meaning','It is going to rain tomorrow.','雨はいつ降りそう？',['昨日','明日','今日'],1,'be going to = ～する予定'],['meaning','The red one is stronger than the blue one.','どちらが強い？',['青','同じ','赤'],2,'stronger than = ～より強い'],['meaning','Wait until the door opens.','いつまで待つ？',['日が暮れるまで','ドアが開くまで','友達が来るまで'],1,'until = ～まで'],['vocab','dangerous','dangerous の意味は？',['危険な','静かな','親切な'],0,'dangerous = 危険な'],['vocab','explore','explore の意味は？',['眠る','探索する','忘れる'],1,'explore = 探索する'],['blank','I have lived here ___ 2020.','空欄に入る言葉は？',['for','during','since'],2,'since 2020 = 2020年から'],['grammar','She ___ to school every day.','正しい形は？',['goes','go','going'],0,'三人称単数現在形は goes'],['talk','Could you help me, please?','自然な返事は？',['Yesterday.','Of course!','It is red.'],1,'Of course! = もちろん！'],['listen','We should get back before dark.','いつ戻るべき？',['真夜中','明日の朝','暗くなる前'],2,'before dark = 暗くなる前']
+ ],
+ hard:[
+ ['meaning','If I had known about the storm, I would have stayed home.','話し手が実際にしたことは？',['家にいた','外出した','嵐を起こした'],1,'仮定法過去完了：実際には知らずに外出した'],['meaning','Despite being exhausted, she continued her journey.','彼女はどうした？',['疲れていたが旅を続けた','旅を中止した','眠っていた'],0,'despite = ～にもかかわらず'],['meaning','The treasure is believed to have been hidden centuries ago.','宝物について何と言っている？',['昨日見つかった','今作られている','何世紀も前に隠されたと考えられる'],2,'is believed to have been = ～されたと考えられている'],['vocab','reluctant','reluctant の意味は？',['積極的な','気が進まない','有名な'],1,'reluctant = 気が進まない'],['vocab','consequence','consequence の意味は？',['結果・影響','約束','出発'],0,'consequence = 結果・影響'],['blank','Had I known the truth, I ___ differently.','空欄に入る言葉は？',['act','will act','would have acted'],2,'仮定法過去完了の帰結：would have + 過去分詞'],['blank','This is the village ___ I grew up.','空欄に入る言葉は？',['where','which','whose'],0,'場所を表す関係副詞 where'],['grammar','Neither of the answers ___ correct.','標準的な文法では？',['are','is','be'],1,'neither of + 複数名詞は通常単数扱い'],['grammar','By next week, we ___ the mission.','未来完了の正しい形は？',['completed','have completed','will have completed'],2,'will have + 過去分詞'],['talk','Would you mind opening the window?','快く引き受ける返事は？',['Not at all.','Yes, I mind.','Never yesterday.'],0,'Not at all. = もちろん構いません'],['listen','The expedition was postponed due to severe weather.','遠征はどうなった？',['早く終わった','悪天候で延期された','成功した'],1,'postponed = 延期された'],['meaning','Unless we hurry, we will miss the last train.','どんな条件で電車に乗り遅れる？',['急いだら','駅が近ければ','急がなければ'],2,'unless = ～しない限り']
+ ]};
+
+const englishBankExtra={"easy":[["vocab","apple","「apple」の意味は？",["orange","りんご","banana"],1,"apple = りんご"],["vocab","book","「book」の意味は？",["本","desk","pen"],0,"book = 本"],["vocab","river","「river」の意味は？",["mountain","forest","川"],2,"river = 川"],["vocab","cloud","「cloud」の意味は？",["wind","雲","rain"],1,"cloud = 雲"],["vocab","happy","「happy」の意味は？",["うれしい","sad","angry"],0,"happy = うれしい"],["vocab","cold","「cold」の意味は？",["hot","warm","寒い"],2,"cold = 寒い"],["vocab","jump","「jump」の意味は？",["sleep","跳ぶ","walk"],1,"jump = 跳ぶ"],["vocab","friend","「friend」の意味は？",["友達","teacher","family"],0,"friend = 友達"],["vocab","yellow","「yellow」の意味は？",["purple","green","黄色"],2,"yellow = 黄色"],["vocab","small","「small」の意味は？",["tall","小さい","large"],1,"small = 小さい"],["vocab","bird","「bird」の意味は？",["鳥","fish","rabbit"],0,"bird = 鳥"],["vocab","window","「window」の意味は？",["door","wall","窓"],2,"window = 窓"],["meaning","The dog is sleeping.","犬は何をしている？",["走っている","食べている","眠っている"],2,"The dog is sleeping. → 眠っている"],["meaning","I like bananas.","好きな果物は？",["ぶどう","バナナ","リンゴ"],1,"I like bananas. → バナナ"],["meaning","There are three birds.","鳥は何羽？",["3羽","2羽","4羽"],0,"There are three birds. → 3羽"],["meaning","My bag is blue.","かばんは何色？",["赤","黄色","青"],2,"My bag is blue. → 青"],["meaning","Please sit down.","何を頼んでいる？",["走って","座って","立って"],1,"Please sit down. → 座って"],["meaning","We play after school.","いつ遊ぶ？",["放課後","朝食前","夜中"],0,"We play after school. → 放課後"],["meaning","The sun is bright.","太陽はどんな様子？",["冷たい","小さい","明るい"],2,"The sun is bright. → 明るい"],["meaning","I can swim.","できることは？",["料理する","泳ぐ","飛ぶ"],1,"I can swim. → 泳ぐ"],["meaning","This is my sister.","紹介しているのは？",["姉妹","兄弟","先生"],0,"This is my sister. → 姉妹"],["meaning","The shop is open.","店はどうなっている？",["閉まっている","壊れている","開いている"],2,"The shop is open. → 開いている"],["meaning","He has a green hat.","帽子の色は？",["黒","緑","青"],1,"He has a green hat. → 緑"],["meaning","We need five coins.","必要なコインは？",["5枚","3枚","7枚"],0,"We need five coins. → 5枚"],["blank","I ___ a student.","空欄に入る語句は？",["are","am","is"],1,"I am a student."],["blank","They ___ friends.","空欄に入る語句は？",["are","is","am"],0,"They are friends."],["blank","This ___ my sword.","空欄に入る語句は？",["are","am","is"],2,"This is my sword."],["blank","We ___ two pets.","空欄に入る語句は？",["having","have","has"],1,"We have two pets."],["blank","She ___ apples.","空欄に入る語句は？",["likes","like","liking"],0,"She likes apples."],["blank","He can ___ fast.","空欄に入る語句は？",["runs","running","run"],2,"He can run fast."],["blank","There ___ a tree.","空欄に入る語句は？",["am","is","are"],1,"There is a tree."],["blank","I go ___ school.","空欄に入る語句は？",["to","at","on"],0,"I go to school."],["blank","The ball is ___ the box.","空欄に入る語句は？",["from","by","in"],2,"The ball is in the box."],["blank","It is ___ orange.","空欄に入る語句は？",["thee","an","a"],1,"It is an orange."],["blank","Do you ___ water?","空欄に入る語句は？",["want","wants","wanted"],0,"Do you want water?"],["blank","I ___ hungry.","空欄に入る語句は？",["are","be","am"],2,"I am hungry."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["She are kind.","She am kind.","She is kind."],2,"She is kind."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["I liking cats.","I like cats.","I likes cats."],1,"I like cats."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["He plays soccer.","He play soccer.","He playing soccer."],0,"He plays soccer."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["We is ready.","We am ready.","We are ready."],2,"We are ready."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["It are raining.","It is raining.","It raining."],1,"It is raining."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["Can you help me?","Can you helps me?","Do can you help me?"],0,"Can you help me?"],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["I has a pen.","I having a pen.","I have a pen."],2,"I have a pen."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["These am books.","These are books.","These is books."],1,"These are books."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["She does not know.","She do not know.","She not knows."],0,"She does not know."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["Where are the key?","Where the key is?","Where is the key?"],2,"Where is the key?"],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["My friends am here.","My friends are here.","My friends is here."],1,"My friends are here."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["The fox runs fast.","The fox run fast.","The fox running fast."],0,"The fox runs fast."],["talk","Hello!","最も自然な返事は？",["Good night yesterday.","Blue water.","Hi!"],2,"Hello! → Hi!"],["talk","What is your name?","最も自然な返事は？",["I am at home.","My name is Alex.","It is Monday."],1,"What is your name? → My name is Alex."],["talk","Where are you from?","最も自然な返事は？",["I am from Japan.","I am twelve.","It is sunny."],0,"Where are you from? → I am from Japan."],["talk","Good morning!","最も自然な返事は？",["Goodbye tomorrow!","I like red.","Good morning!"],2,"Good morning! → Good morning!"],["talk","Are you ready?","最も自然な返事は？",["At the river.","Yes, I am.","Yes, I do yesterday."],1,"Are you ready? → Yes, I am."],["talk","What time is it?","最も自然な返事は？",["It is three o’clock.","It is green.","I am fine."],0,"What time is it? → It is three o’clock."],["talk","Can I sit here?","最も自然な返事は？",["I sit yesterday.","It is cold.","Sure, go ahead."],2,"Can I sit here? → Sure, go ahead."],["talk","See you later!","最も自然な返事は？",["Yes, it does.","See you!","Thank you blue."],1,"See you later! → See you!"],["talk","Do you like music?","最も自然な返事は？",["Yes, I do.","Yes, I am yesterday.","At the shop."],0,"Do you like music? → Yes, I do."],["talk","Where is the station?","最も自然な返事は？",["I am hungry.","She is ten.","It is over there."],2,"Where is the station? → It is over there."],["talk","I am sorry.","最も自然な返事は？",["At noon.","That’s okay.","It is a bird."],1,"I am sorry. → That’s okay."],["talk","Have a nice day!","最も自然な返事は？",["You too!","I have two.","This is a day."],0,"Have a nice day! → You too!"],["listen","Stop here.","聞こえた英語の意味は？",["ここで止まる","ここで走る","左に曲がる"],0,"Stop here. → ここで止まる"],["listen","Go straight.","聞こえた英語の意味は？",["右に曲がる","戻る","まっすぐ進む"],2,"Go straight. → まっすぐ進む"],["listen","Open your bag.","聞こえた英語の意味は？",["靴を脱ぐ","かばんを開ける","窓を閉める"],1,"Open your bag. → かばんを開ける"],["listen","Watch out!","聞こえた英語の意味は？",["気をつけて！","おやすみ！","ありがとう！"],0,"Watch out! → 気をつけて！"],["listen","Follow me.","聞こえた英語の意味は？",["待っていて","帰って","ついてきて"],2,"Follow me. → ついてきて"],["listen","Come back soon.","聞こえた英語の意味は？",["遠くへ行って","すぐ戻ってきて","今すぐ寝て"],1,"Come back soon. → すぐ戻ってきて"],["listen","The door is locked.","聞こえた英語の意味は？",["ドアに鍵がかかっている","ドアが開いている","ドアが壊れている"],0,"The door is locked. → ドアに鍵がかかっている"],["listen","Look at the sky.","聞こえた英語の意味は？",["海を見て","足元を見て","空を見て"],2,"Look at the sky. → 空を見て"],["listen","Pick up the key.","聞こえた英語の意味は？",["鍵を買う","鍵を拾う","鍵を捨てる"],1,"Pick up the key. → 鍵を拾う"],["listen","Wait a minute.","聞こえた英語の意味は？",["少し待って","急いで走って","ここに座って"],0,"Wait a minute. → 少し待って"],["listen","It is very windy.","聞こえた英語の意味は？",["雪が降っている","とても暑い","風がとても強い"],2,"It is very windy. → 風がとても強い"],["listen","The bridge is safe.","聞こえた英語の意味は？",["橋は遠い","橋は安全だ","橋は壊れている"],1,"The bridge is safe. → 橋は安全だ"]],"normal":[["vocab","shelter","「shelter」の意味は？",["合図","避難場所","食料"],1,"shelter = 避難場所"],["vocab","discover","「discover」の意味は？",["発見する","隠す","修理する"],0,"discover = 発見する"],["vocab","improve","「improve」の意味は？",["破壊する","遅らせる","改善する"],2,"improve = 改善する"],["vocab","equipment","「equipment」の意味は？",["方向","装備","天候"],1,"equipment = 装備"],["vocab","available","「available」の意味は？",["利用できる","危険な","壊れた"],0,"available = 利用できる"],["vocab","confident","「confident」の意味は？",["疲れた","静かな","自信がある"],2,"confident = 自信がある"],["vocab","reduce","「reduce」の意味は？",["忘れる","減らす","増やす"],1,"reduce = 減らす"],["vocab","protect","「protect」の意味は？",["守る","借りる","選ぶ"],0,"protect = 守る"],["vocab","distance","「distance」の意味は？",["高さ","重さ","距離"],2,"distance = 距離"],["vocab","solution","「solution」の意味は？",["質問","解決策","障害物"],1,"solution = 解決策"],["vocab","patient","「patient」の意味は？",["辛抱強い","騒がしい","眠い"],0,"patient = 辛抱強い"],["vocab","prepare","「prepare」の意味は？",["逃げる","倒れる","準備する"],2,"prepare = 準備する"],["meaning","We have already crossed the river.","川を渡ったのは？",["これから渡る","渡るのをやめた","すでに渡った"],2,"We have already crossed the river. → すでに渡った"],["meaning","The cave is too dark to explore.","洞窟を探索できない理由は？",["遠すぎる","暗すぎる","狭すぎる"],1,"The cave is too dark to explore. → 暗すぎる"],["meaning","I have never seen such a creature.","話し手の経験は？",["こんな生物は初めて","毎日見ている","昔飼っていた"],0,"I have never seen such a creature. → こんな生物は初めて"],["meaning","She was reading when I arrived.","到着したとき彼女は？",["眠っていた","走っていた","読書中だった"],2,"She was reading when I arrived. → 読書中だった"],["meaning","The road was closed because of snow.","道が閉鎖された理由は？",["火事","雪","洪水"],1,"The road was closed because of snow. → 雪"],["meaning","You should take a break.","勧めていることは？",["休憩する","走り続ける","食べない"],0,"You should take a break. → 休憩する"],["meaning","This tool is easier to use than that one.","使いやすいのは？",["あの道具","同じ","この道具"],2,"This tool is easier to use than that one. → この道具"],["meaning","He used to live near the lake.","以前住んでいた場所は？",["町の中心","湖の近く","森の中"],1,"He used to live near the lake. → 湖の近く"],["meaning","The train leaves in ten minutes.","出発するのは？",["10分後","10分前","10時"],0,"The train leaves in ten minutes. → 10分後"],["meaning","Neither route is safe at night.","夜に安全な道は？",["両方安全","右だけ安全","どちらも安全ではない"],2,"Neither route is safe at night. → どちらも安全ではない"],["meaning","We ran out of food yesterday.","昨日何が起きた？",["料理をした","食料が尽きた","食料を買った"],1,"We ran out of food yesterday. → 食料が尽きた"],["meaning","The castle has been repaired.","城はどうなった？",["修理された","取り壊された","まだ建設中"],0,"The castle has been repaired. → 修理された"],["blank","I have been waiting ___ an hour.","空欄に入る語句は？",["during","for","since"],1,"I have been waiting for an hour."],["blank","She is interested ___ science.","空欄に入る語句は？",["in","on","at"],0,"She is interested in science."],["blank","We arrived ___ the station.","空欄に入る語句は？",["to","on","at"],2,"We arrived at the station."],["blank","He is good ___ solving puzzles.","空欄に入る語句は？",["in","at","for"],1,"He is good at solving puzzles."],["blank","If it rains, we ___ stay here.","空欄に入る語句は？",["will","would","had"],0,"If it rains, we will stay here."],["blank","The bag was made ___ leather.","空欄に入る語句は？",["by","to","of"],2,"The bag was made of leather."],["blank","I prefer tea ___ coffee.","空欄に入る語句は？",["from","to","than"],1,"I prefer tea to coffee."],["blank","This book belongs ___ me.","空欄に入る語句は？",["to","for","with"],0,"This book belongs to me."],["blank","She has worked here ___ Monday.","空欄に入る語句は？",["for","during","since"],2,"She has worked here since Monday."],["blank","You should avoid ___ late.","空欄に入る語句は？",["to be","being","be"],1,"You should avoid being late."],["blank","He apologized ___ being rude.","空欄に入る語句は？",["for","to","at"],0,"He apologized for being rude."],["blank","I look forward to ___ you.","空欄に入る語句は？",["see","saw","seeing"],2,"I look forward to seeing you."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["I live here since five years.","I have live here for five years.","I have lived here for five years."],2,"I have lived here for five years."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["If it rains, we would stayed home.","If it rains, we will stay home.","If it will rain, we stay home."],1,"If it rains, we will stay home."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["She has already finished her work.","She already finish her work.","She has already finish her work."],0,"She has already finished her work."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["This is the most best option.","This is the better option of all.","This is the best option."],2,"This is the best option."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["I enjoy read books.","I enjoy reading books.","I enjoy to read books."],1,"I enjoy reading books."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["He told me to wait.","He told me wait.","He said me to wait."],0,"He told me to wait."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["The bridge built in 1990.","The bridge was build in 1990.","The bridge was built in 1990."],2,"The bridge was built in 1990."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["She asked whether I am ready yesterday.","She asked whether I was ready.","She asked whether was I ready."],1,"She asked whether I was ready."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["I would rather walk than drive.","I would rather walking than drive.","I would rather walk to drive."],0,"I would rather walk than drive."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["You must not to enter this area.","You must do not enter this area.","You must not enter this area."],2,"You must not enter this area."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["There is fewer people today.","There are fewer people today.","There are less people today."],1,"There are fewer people today."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["She is used to waking up early.","She is used to wake up early.","She used to waking up early."],0,"She is used to waking up early."],["talk","Could you tell me the way to the museum?","最も自然な返事は？",["Yes, I have a museum.","It was yesterday.","Sure, go straight and turn left."],2,"Could you tell me the way to the museum? → Sure, go straight and turn left."],["talk","I am afraid I cannot make it today.","最も自然な返事は？",["The sky is blue.","No problem. Maybe next time.","I made a cake."],1,"I am afraid I cannot make it today. → No problem. Maybe next time."],["talk","Would you like something to drink?","最も自然な返事は？",["A glass of water, please.","At five o’clock.","Yes, I am drinking yesterday."],0,"Would you like something to drink? → A glass of water, please."],["talk","How long have you been here?","最も自然な返事は？",["It is ten kilometers.","I will be tall.","For about two hours."],2,"How long have you been here? → For about two hours."],["talk","What do you think of this plan?","最も自然な返事は？",["I am from Tokyo.","It sounds reasonable.","It is behind the tree."],1,"What do you think of this plan? → It sounds reasonable."],["talk","Could I borrow your pen?","最も自然な返事は？",["Of course. Here you go.","I borrowed yesterday.","The pen is blue water."],0,"Could I borrow your pen? → Of course. Here you go."],["talk","Sorry to keep you waiting.","最も自然な返事は？",["I will wait yesterday.","This is a map.","No worries."],2,"Sorry to keep you waiting. → No worries."],["talk","What are you looking for?","最も自然な返事は？",["Tomorrow morning is fine.","I am looking for my keys.","I look blue."],1,"What are you looking for? → I am looking for my keys."],["talk","Would you mind speaking more slowly?","最も自然な返事は？",["Not at all.","Yes, I speak yesterday.","It is too heavy."],0,"Would you mind speaking more slowly? → Not at all."],["talk","How was your trip?","最も自然な返事は？",["At the station.","For three coins.","It was amazing!"],2,"How was your trip? → It was amazing!"],["talk","Can we reschedule the meeting?","最も自然な返事は？",["I have a map.","Sure. How about Friday?","It is a chair."],1,"Can we reschedule the meeting? → Sure. How about Friday?"],["talk","Do you have any recommendations?","最も自然な返事は？",["I suggest the forest trail.","I recommend yesterday.","Yes, it is mine."],0,"Do you have any recommendations? → I suggest the forest trail."],["listen","The store closes at six.","店は何時に閉まる？",["6時","7時","8時"],0,"The store closes at six. → 6時"],["listen","Please keep your ticket.","何を保管する？",["鍵","地図","チケット"],2,"Please keep your ticket. → チケット"],["listen","The path is slippery after rain.","雨の後の道は？",["広くなる","滑りやすい","乾いている"],1,"The path is slippery after rain. → 滑りやすい"],["listen","We need to leave before sunset.","いつまでに出発する？",["日没前","真夜中","昼食後"],0,"We need to leave before sunset. → 日没前"],["listen","The meeting has been canceled.","会議はどうなった？",["延期された","始まった","中止された"],2,"The meeting has been canceled. → 中止された"],["listen","I would like to book a room.","何を予約したい？",["レストラン","部屋","列車"],1,"I would like to book a room. → 部屋"],["listen","You can take either road.","使える道は？",["どちらでもよい","右だけ","左だけ"],0,"You can take either road. → どちらでもよい"],["listen","The package arrived this morning.","荷物はいつ届いた？",["昨日の夜","明日","今朝"],2,"The package arrived this morning. → 今朝"],["listen","The museum is across from the bank.","博物館の場所は？",["銀行の後ろ","銀行の向かい","銀行の中"],1,"The museum is across from the bank. → 銀行の向かい"],["listen","Please fill out this form.","何をする？",["用紙に記入する","用紙を捨てる","用紙を折る"],0,"Please fill out this form. → 用紙に記入する"],["listen","I have been waiting for thirty minutes.","待った時間は？",["3分","13分","30分"],2,"I have been waiting for thirty minutes. → 30分"],["listen","The flight was delayed by two hours.","飛行機はどうなった？",["欠航した","2時間遅れた","2時間早まった"],1,"The flight was delayed by two hours. → 2時間遅れた"]],"hard":[["vocab","ambiguous","「ambiguous」の意味は？",["不可欠な","曖昧な","明確な"],1,"ambiguous = 曖昧な"],["vocab","inevitable","「inevitable」の意味は？",["避けられない","偶然の","無関係な"],0,"inevitable = 避けられない"],["vocab","substantial","「substantial」の意味は？",["わずかな","一時的な","かなりの"],2,"substantial = かなりの"],["vocab","undermine","「undermine」の意味は？",["説明する","損なう","補強する"],1,"undermine = 損なう"],["vocab","feasible","「feasible」の意味は？",["実行可能な","不可能な","曖昧な"],0,"feasible = 実行可能な"],["vocab","allocate","「allocate」の意味は？",["拒否する","測定する","割り当てる"],2,"allocate = 割り当てる"],["vocab","mitigate","「mitigate」の意味は？",["隠す","軽減する","悪化させる"],1,"mitigate = 軽減する"],["vocab","resilient","「resilient」の意味は？",["回復力のある","壊れやすい","無関心な"],0,"resilient = 回復力のある"],["vocab","contemplate","「contemplate」の意味は？",["拒絶する","急ぐ","熟考する"],2,"contemplate = 熟考する"],["vocab","prerequisite","「prerequisite」の意味は？",["代替案","前提条件","副作用"],1,"prerequisite = 前提条件"],["vocab","compelling","「compelling」の意味は？",["説得力のある","退屈な","偶然の"],0,"compelling = 説得力のある"],["vocab","scrutinize","「scrutinize」の意味は？",["無視する","模倣する","精査する"],2,"scrutinize = 精査する"],["meaning","Not until the sun rose did they realize they were lost.","いつ迷子だと気づいた？",["日没前","出発前","日の出後"],2,"Not until the sun rose did they realize they were lost. → 日の出後"],["meaning","The proposal was rejected on the grounds that it was too costly.","提案が却下された理由は？",["期限が短かった","費用が高すぎた","危険すぎた"],1,"The proposal was rejected on the grounds that it was too costly. → 費用が高すぎた"],["meaning","Had she arrived earlier, she might have caught the train.","実際に起きたことは？",["電車に間に合わなかった可能性が高い","早く到着した","電車は運休した"],0,"Had she arrived earlier, she might have caught the train. → 電車に間に合わなかった可能性が高い"],["meaning","The more we explored, the less certain we became.","探索が進むと？",["確信が強まった","何も変わらなかった","確信が薄れた"],2,"The more we explored, the less certain we became. → 確信が薄れた"],["meaning","He denied having disclosed the confidential information.","彼は何を否定した？",["情報を失ったこと","機密情報を漏らしたこと","情報を受け取ったこと"],1,"He denied having disclosed the confidential information. → 機密情報を漏らしたこと"],["meaning","The discovery calls into question the existing theory.","発見の影響は？",["既存理論に疑問を投げかける","理論を完全に証明する","理論と無関係"],0,"The discovery calls into question the existing theory. → 既存理論に疑問を投げかける"],["meaning","She is said to have completed the mission alone.","何が伝えられている？",["彼女は任務を拒否した","彼女は助けを求めた","彼女は一人で任務を終えた"],2,"She is said to have completed the mission alone. → 彼女は一人で任務を終えた"],["meaning","No sooner had we entered than the lights went out.","何が起きた？",["退出後に点灯した","入った直後に消灯した","入る前に消灯した"],1,"No sooner had we entered than the lights went out. → 入った直後に消灯した"],["meaning","The evidence was insufficient to draw a firm conclusion.","証拠について正しいのは？",["結論を出すには不十分","十分だった","捏造された"],0,"The evidence was insufficient to draw a firm conclusion. → 結論を出すには不十分"],["meaning","The expedition was called off owing to adverse conditions.","遠征はどうなった？",["予定より早く出発","成功した","悪条件で中止"],2,"The expedition was called off owing to adverse conditions. → 悪条件で中止"],["meaning","Only by cooperating can we overcome this obstacle.","障害を越えるために必要なのは？",["待ち続けること","協力すること","一人で行動すること"],1,"Only by cooperating can we overcome this obstacle. → 協力すること"],["meaning","She refrained from commenting until the investigation ended.","彼女はどうした？",["調査終了までコメントを控えた","すぐ発表した","調査を中止した"],0,"She refrained from commenting until the investigation ended. → 調査終了までコメントを控えた"],["blank","Rarely ___ such a remarkable sight.","空欄に入る語句は？",["I saw have","have I seen","I have seen"],1,"Rarely have I seen such a remarkable sight."],["blank","If I ___ you, I would reconsider.","空欄に入る語句は？",["were","am","will be"],0,"If I were you, I would reconsider."],["blank","No sooner had he left ___ it started raining.","空欄に入る語句は？",["when","then","than"],2,"No sooner had he left than it started raining."],["blank","She insisted that he ___ present.","空欄に入る語句は？",["was being","be","is"],1,"She insisted that he be present."],["blank","The report is worth ___.","空欄に入る語句は？",["reading","to read","read"],0,"The report is worth reading."],["blank","He objected to ___ treated unfairly.","空欄に入る語句は？",["be","have","being"],2,"He objected to being treated unfairly."],["blank","Not only ___ talented, but she is diligent.","空欄に入る語句は？",["does she","is she","she is"],1,"Not only is she talented, but she is diligent."],["blank","It is high time we ___ home.","空欄に入る語句は？",["went","go","will go"],0,"It is high time we went home."],["blank","The project would have succeeded if we ___ more time.","空欄に入る語句は？",["have","will have","had had"],2,"The project would have succeeded if we had had more time."],["blank","Under no circumstances ___ the door.","空欄に入る語句は？",["you open should","should you open","you should open"],1,"Under no circumstances should you open the door."],["blank","He is believed ___ the country.","空欄に入る語句は？",["to have left","to leaving","have left"],0,"He is believed to have left the country."],["blank","I wish I ___ harder last year.","空欄に入る語句は？",["studied","will study","had studied"],2,"I wish I had studied harder last year."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["Hardly I had arrived when it began to rain.","Hardly had I arrived than it began to rain.","Hardly had I arrived when it began to rain."],2,"Hardly had I arrived when it began to rain."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["If I had knew, I would help.","If I had known, I would have helped.","If I knew, I would have helped yesterday."],1,"If I had known, I would have helped."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["It is essential that he be informed.","It is essential that he is inform.","It is essential that he being informed."],0,"It is essential that he be informed."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["She is accustomed to work under pressure.","She is accustomed working under pressure.","She is accustomed to working under pressure."],2,"She is accustomed to working under pressure."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["The findings is consistent with the hypothesis.","The findings are consistent with the hypothesis.","The findings are consistent to the hypothesis."],1,"The findings are consistent with the hypothesis."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["Were it not for your help, we would fail.","Was it not for your help, we would fail.","Were not it for your help, we fail."],0,"Were it not for your help, we would fail."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["Not until later I understood.","Not until later I did understand.","Not until later did I understand."],2,"Not until later did I understand."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["Sooner we start, the better.","The sooner we start, the better.","The sooner we start, better."],1,"The sooner we start, the better."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["Having finished the task, she left.","Having finish the task, she left.","Have finished the task, she left."],0,"Having finished the task, she left."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["He would rather you stay here yesterday.","He would rather you staying here.","He would rather you stayed here."],2,"He would rather you stayed here."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["Little did they knew what lay ahead.","Little did they know what lay ahead.","Little they did know what lay ahead."],1,"Little did they know what lay ahead."],["grammar","正しい英文を選んでください","正しい英文を選ぼう",["This issue warrants further investigation.","This issue warrants to investigate further.","This issue warrant further investigation."],0,"This issue warrants further investigation."],["talk","I am not entirely convinced by the evidence.","最も自然な返事は？",["The weather is sunny.","I already bought lunch.","What concerns you most?"],2,"I am not entirely convinced by the evidence. → What concerns you most?"],["talk","Could you elaborate on your reasoning?","最も自然な返事は？",["It was delicious.","Certainly. Let me explain.","No, I am at the station."],1,"Could you elaborate on your reasoning? → Certainly. Let me explain."],["talk","We may have underestimated the risks.","最も自然な返事は？",["Then we should reassess our plan.","I like your hat.","The meeting is upstairs."],0,"We may have underestimated the risks. → Then we should reassess our plan."],["talk","Would it be possible to postpone the deadline?","最も自然な返事は？",["It was a blue door.","Yes, I am a deadline.","Let me check the schedule."],2,"Would it be possible to postpone the deadline? → Let me check the schedule."],["talk","I appreciate your constructive feedback.","最も自然な返事は？",["I am from the forest.","I am glad it was helpful.","It costs three coins."],1,"I appreciate your constructive feedback. → I am glad it was helpful."],["talk","How do you account for the discrepancy?","最も自然な返事は？",["There may be an error in the data.","It is next to the river.","I account yesterday."],0,"How do you account for the discrepancy? → There may be an error in the data."],["talk","We need to reach a consensus.","最も自然な返事は？",["I have a new backpack.","The road is long.","Let us discuss the options."],2,"We need to reach a consensus. → Let us discuss the options."],["talk","Could you clarify the scope of the project?","最も自然な返事は？",["I am tired yesterday.","It covers the first three phases.","The castle is purple."],1,"Could you clarify the scope of the project? → It covers the first three phases."],["talk","The results were inconclusive.","最も自然な返事は？",["We may need additional tests.","I bought some apples.","It is a good morning."],0,"The results were inconclusive. → We may need additional tests."],["talk","I would like to raise a concern.","最も自然な返事は？",["The train is red.","I have two dogs.","Of course. Please go ahead."],2,"I would like to raise a concern. → Of course. Please go ahead."],["talk","This approach may not be sustainable.","最も自然な返事は？",["I lost my umbrella.","What alternatives do we have?","The sky is cloudy."],1,"This approach may not be sustainable. → What alternatives do we have?"],["talk","Thank you for bringing this to my attention.","最も自然な返事は？",["I thought you should know.","At the lake.","It is a wooden chair."],0,"Thank you for bringing this to my attention. → I thought you should know."],["listen","The findings should be interpreted with caution.","結果の扱いは？",["慎重に解釈する","無視する","必ず正しいと断定する"],0,"The findings should be interpreted with caution. → 慎重に解釈する"],["listen","The committee has reached a unanimous decision.","委員会の決定は？",["意見が割れた","延期された","全会一致"],2,"The committee has reached a unanimous decision. → 全会一致"],["listen","We cannot rule out the possibility of further delays.","遅延について？",["すでに解決した","さらなる遅延の可能性がある","遅延は絶対ない"],1,"We cannot rule out the possibility of further delays. → さらなる遅延の可能性がある"],["listen","The agreement is contingent upon final approval.","合意の条件は？",["最終承認","追加の資金","天候"],0,"The agreement is contingent upon final approval. → 最終承認"],["listen","The data appears to contradict our initial assumption.","データは何を示す？",["仮定を証明","データ不足のみ","当初の仮定と矛盾"],2,"The data appears to contradict our initial assumption. → 当初の仮定と矛盾"],["listen","He was reluctant to disclose the details.","彼の態度は？",["何も知らなかった","詳細を話すのをためらった","すぐ説明した"],1,"He was reluctant to disclose the details. → 詳細を話すのをためらった"],["listen","The expedition was suspended indefinitely.","遠征はどうなった？",["無期限停止","一日延期","予定通り開始"],0,"The expedition was suspended indefinitely. → 無期限停止"],["listen","The proposal merits careful consideration.","提案には何が必要？",["即時却下","無条件の承認","慎重な検討"],2,"The proposal merits careful consideration. → 慎重な検討"],["listen","We need to distinguish correlation from causation.","区別すべきものは？",["価格と重量","相関と因果","速度と距離"],1,"We need to distinguish correlation from causation. → 相関と因果"],["listen","The new policy will take effect next month.","新方針はいつ発効？",["来月","今月","昨年"],0,"The new policy will take effect next month. → 来月"],["listen","The witness provided a detailed account of the incident.","証人は何をした？",["証言を拒否","事故を起こした","出来事を詳しく説明"],2,"The witness provided a detailed account of the incident. → 出来事を詳しく説明"],["listen","The outcome remains uncertain despite recent progress.","結果について？",["すでに失敗した","進展があっても不確実","確定している"],1,"The outcome remains uncertain despite recent progress. → 進展があっても不確実"]]};
+for(const level of Object.keys(englishBankExtra)) englishBank[level].push(...englishBankExtra[level]);
+const englishTypeNames={all:'すべて',meaning:'英文読解',vocab:'単語',blank:'穴埋め',grammar:'文法',talk:'英会話',listen:'リスニング'};
+const englishLevelNames={easy:'初級',normal:'中級',hard:'上級'};
+if(!['easy','normal','hard'].includes(state.englishLevel))state.englishLevel='normal';
+if(!Object.hasOwn(englishTypeNames,state.englishType))state.englishType='all';
+let question=null,answered=false,lastQuestionKey='';
+function showEnglishSettings(){const level=state.englishLevel,type=state.englishType;modal('📚 英語の設定',`<p>難易度と問題の種類を選ぼう！設定は自動セーブされ、ボス戦・捕獲・英語クエストすべてに反映されます。</p><p><b>🎯 難易度</b></p>${Object.entries(englishLevelNames).map(([k,v])=>btn((level===k?'✅ ':'')+v,'setEnglishLevel('+JSON.stringify(k)+')')).join('')}<p><b>🧩 問題の種類</b></p>${Object.entries(englishTypeNames).map(([k,v])=>btn((type===k?'✅ ':'')+v,'setEnglishType('+JSON.stringify(k)+')')).join('')}<p class="small">🔊 リスニングでは問題文を音声で聞いて答えます。音声が使えない端末では「英文を見る」で確認できます。</p>${btn('閉じる','closeGameModal()')}`)}
+function setEnglishLevel(v){if(!englishBank[v])return;state.englishLevel=v;persist();showEnglishSettings()}
+function setEnglishType(v){if(!Object.hasOwn(englishTypeNames,v))return;state.englishType=v;persist();showEnglishSettings()}
+function pickTask(){let pool=englishBank[state.englishLevel]||englishBank.normal;if(state.englishType!=='all')pool=pool.filter(t=>t[0]===state.englishType);if(!pool.length)pool=englishBank.normal;let candidates=pool.filter(t=>t[1]!==lastQuestionKey);let t=(candidates.length?candidates:pool)[Math.floor(Math.random()*(candidates.length||pool.length))];lastQuestionKey=t[1];return {kind:t[0],q:t[1],ask:t[2],opts:t[3],ans:t[4],jp:t[5]}}
+function quiz(callback){question=pickTask();answered=false;renderQuiz(callback);if(question.kind==='listen')setTimeout(()=>{if(active&&question&&question.kind==='listen')speak(question.q)},180)}
+function renderQuiz(callback,feedback=''){let t=question,listen=t.kind==='listen';let qView=listen?`<p>🔊 音声を聞いて答えてね</p>${btn('🔊 もう一度聞く','speak(question.q)')}${btn('👀 英文を見る','document.getElementById("heardText").style.display="block"')}<p id="heardText" style="display:none">${t.q}</p>`:`<p style="font-size:19px">${t.q}</p>${btn('🔊 英語を聞く','speak(question.q)')}`;modal('🎧 英語チャレンジ',`<p class="small">${englishLevelNames[state.englishLevel]} ・ ${englishTypeNames[t.kind]}</p>${qView}${btn('💡 ヒントを見る','document.getElementById("translation").style.display="block"')}<p id="translation" style="display:none;color:#b8edc3">${t.jp}</p><p><b>${t.ask}</b></p>${t.opts.map((o,i)=>btn((i+1)+'. '+o,'checkAnswer('+i+')')).join('')}<p class="small">${feedback}</p>`);window.quizDone=callback}
+function checkAnswer(i){if(answered)return;if(i===question.ans){answered=true;window.quizDone(true)}else{sayToast('もう一度考えてみよう！');if(question.kind==='listen')speak(question.q)}}
+function startBattle(e){battle={e,enemyHp:22+Math.floor(rand()*18),max:40};battle.max=battle.enemyHp;battleScreen()}function battleScreen(message=''){if(!battle)return;let t=types[battle.e.id],p=state.party[0];modal('⚔️ 野生の'+t.name,`<div style="text-align:center">${monsterPanelArt(battle.e.id)}</div><p>敵HP ${Math.max(0,battle.enemyHp)} / ${battle.max}<br>味方 ${types[p.id].name} HP ${p.hp} / ${p.maxhp}</p><p>${message}</p>${btn('🎧 英語を聞いて攻撃','attack()')}${btn('🔮 捕獲玉を投げる（残り '+state.balls+' 個）','capture()')}${btn('🏃 逃げる','closeGameModal()')}`)}function attack(){quiz(ok=>{if(!battle)return;let p=state.party[0];battle.enemyHp-=p.level*3+12;speak('Great job!');if(battle.enemyHp<=0){winBattle();return}p.hp=Math.max(1,p.hp-4);battleScreen('正解！攻撃成功！敵も反撃してきた。')})}function winBattle(){let p=state.party[0],e=battle.e;e.alive=false;p.xp+=15;state.coins+=12;state.wins++;if(p.xp>=p.level*25){p.xp=0;p.level++;p.maxhp+=5;p.hp=p.maxhp;if(p.level>=4&&!p.evolved){p.evolved=true;sayToast('✨ '+types[p.id].evo+' に進化！')}}persist();modal('🎉 勝利！',`<p>経験値 +15、コイン +12！</p><p>${p.evolved?'✨ '+types[p.id].evo+' に進化している！':''}</p>${btn('冒険に戻る','closeGameModal()')}`)}function capture(){if(state.balls<=0){sayToast('捕獲玉がない！町の商人へ');return}state.balls--;persist();quiz(ok=>{if(!battle)return;let chance=battle.enemyHp/battle.max<.5?.95:.75;if(Math.random()<chance){let e=battle.e;e.alive=false;let mon=makeMon(e.id);state.party.push(mon);persist();modal('🎊 捕獲成功！',`<div style="text-align:center">${monsterPanelArt(e.id)}</div><p>${types[e.id].name} が仲間になった！</p>${btn('冒険に戻る','closeGameModal()')}`)}else battleScreen('惜しい！モンスターが捕獲玉から抜け出した！')})}function npc(e){if(e.name==='先生'){modal('👩‍🏫 町の先生',`<p>"Welcome to Monster World!"</p>${btn('🔊 英語を聞く',"speak('Welcome to Monster World! Let us explore together!')")}${btn('英語クエストに挑戦','teacherQuiz()')}${btn('閉じる','closeGameModal()')}`)}else if(e.name==='商人'){modal('🧑‍💼 商人',`<p>"Would you like to buy a capture ball?"</p><p>捕獲玉1個：20コイン</p>${btn('🔊 英語を聞く',"speak('Would you like to buy a capture ball?')")}${btn('捕獲玉を買う','buyBall()')}${btn('閉じる','closeGameModal()')}`)}else if(e.name!=='旅人'){const lines={'雪原の研究者':['The snow is deeper near the mountains.','山の近くは雪が深いよ'],'火山の守り人':['Stay away from the hot lava.','熱い溶岩には近づかないで'],'遺跡の考古学者':['These ruins are very old.','この遺跡はとても古い'],'道案内人':['Follow the road to explore new places.','道を進んで新しい場所を探検しよう'],'宝石研究員':['These crystals shine at night.','この結晶は夜に光ります'],'キノコ博士':['Some mushrooms are taller than trees.','木より高いキノコもあるよ'],'砂漠の旅人':['Remember to bring enough water.','十分な水を持っていってね'],'花畑の園芸家':['The flowers bloom in the sunshine.','花は日光を浴びて咲くよ']};const line=lines[e.name]||['Welcome!','ようこそ'];modal(e.icon+' '+e.name,`<p>“${line[0]}”</p><p class="small">${line[1]}</p>${btn('🔊 英語を聞く',`speak(${JSON.stringify(line[0])})`)}${btn('英語クエストに挑戦','teacherQuiz()')}${btn('閉じる','closeGameModal()')}`)}else{modal('🧑‍🦱 旅人',`<p>"The forest is to the east. Be careful!"</p>${btn('🔊 英語を聞く',"speak('The forest is to the east. Be careful!')")}${btn('英語を練習する','teacherQuiz()')}${btn('閉じる','closeGameModal()')}`)}}function teacherQuiz(){quiz(()=>{state.coins+=10;state.quests++;let p=state.party[0];p.xp+=8;if(p.xp>=p.level*25){p.xp=0;p.level++;p.maxhp+=5;p.hp=p.maxhp;if(p.level>=4&&!p.evolved){p.evolved=true;sayToast('✨ '+types[p.id].evo+' に進化！')}}persist();modal('🌟 クエスト達成！',`<p>英語の練習に成功！10コインと経験値8を獲得。</p>${btn('戻る','closeGameModal()')}`)})}function buyBall(){if(state.coins<20){sayToast('コインが足りない！');return}state.coins-=20;state.balls++;persist();npc(entities[1])}function showParty(){modal('🐾 モンスター図鑑・仲間',state.party.map((m,i)=>`<p>${monsterArt(m.id,m.evolved)} <b>${m.evolved?types[m.id].evo:types[m.id].name}</b> Lv.${m.level} HP ${m.hp}/${m.maxhp} EXP ${m.xp}/${m.level*25}</p>${i?btn('先頭にする','lead('+i+')'):''}${!i?'<p class=small>乗り物：'+(mountMode(m)==='fly'?'空を飛ぶ':mountMode(m)==='swim'?'水を渡る':mountMode(m)==='run'?'速く走る':'進化後に解放')+'</p>':''}`).join('')+btn('閉じる','closeGameModal()'))}function lead(i){if(mounted){mounted=false;updateRideButton()}state.party.unshift(state.party.splice(i,1)[0]);persist();renderWorld();updateRideButton();showParty()}function showBag(){modal('🎒 持ち物',`<p>🪙 コイン：${state.coins}</p><p>🔮 捕獲玉：${state.balls}</p><p>🏆 勝利数：${state.wins}</p><p>📖 英語クエスト：${state.quests}</p><p>🗺️ 発見したエリア：${state.discovered.length}</p>${btn('閉じる','closeGameModal()')}`)}function showHelp(){modal('🗺️ 遊び方',`<p>方向ボタンで広い世界を自由に移動。PCでは矢印キーやWASDを使えます。</p><p>野生モンスターに触れるとバトル！「調べる」で近くの人と会話できます。</p><p>英語を聞き、正しい意味を選ぶと攻撃・捕獲できます。仲間はレベル4で進化します。</p><p>Ver.15では3章の物語と3体の地域ボスが追加されました。「📜 物語」で進行を確認し、ボスに近づいて「調べる」で英語バトルに挑めます。Ver.14では町にショップ・回復センター・研究所ができました。建物の入口に近づいて「調べる」を押すと中に入れます。新エリア発見の報酬は1つの表示に統一しました。Ver.13では主人公とモンスターが立体モデルになり、歩行・飛行の動きが加わりました。Ver.10では進化した先頭の仲間に『乗る』ボタンで乗れます。フレミィとサンバードは飛行、アクアは水上移動、その他は高速走行。水や崖の上では降りられません。乗っている間は野生モンスターとの戦闘も発生します。Ver.9では先頭の仲間が主人公の後ろを歩きます。仲間一覧から先頭を変更できます。草むらの演出は草原や森など草のある場所だけに表示されます。進化するとモンスターの体や輪郭も大きく変わります。<\/p><p>Ver.7ではクリスタル渓谷・キノコの森・砂漠・花畑も探検できます。橋や階段も通れます。崖と水は通れませんが橋と階段は通れます。</p><p>町の商人から捕獲玉を買えます。新エリア発見で15コイン獲得。右上のミニマップも活用しよう。自動セーブ対応。</p>${btn('閉じる','closeGameModal()')}`)}
+// V4 self-contained vector graphics. No network, fonts, or image files required.
+function svgArt(body){return '<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'+body+'</svg>'}
+const art={
+ hero:svgArt('<ellipse cx="24" cy="43" rx="15" ry="4" fill="#163e39" opacity=".35"/><path d="M13 29L10 40 18 42 22 33M35 29L38 40 30 42 26 33" fill="#283b5d" stroke="#172a41" stroke-width="2"/><path d="M14 20Q24 15 34 20L38 35Q24 40 10 35Z" fill="#e9b65a" stroke="#795037" stroke-width="2"/><path d="M18 23L30 23 28 35 20 35Z" fill="#f3e3bb"/><path d="M11 22L6 31 10 34 17 27M37 22L42 31 38 34 31 27" fill="#f0c68d" stroke="#795037" stroke-width="2"/><ellipse cx="24" cy="14" rx="12" ry="11" fill="#f4c996" stroke="#795037" stroke-width="1.5"/><path d="M11 13Q10 0 24 3Q40 2 37 15L32 10 20 10 14 16Z" fill="#4d3441"/><circle cx="20" cy="16" r="1.6" fill="#272333"/><circle cx="29" cy="16" r="1.6" fill="#272333"/><path d="M21 21Q24 23 27 21" fill="none" stroke="#9a5d58" stroke-width="1.5"/>'),
+ npc:svgArt('<ellipse cx="24" cy="43" rx="14" ry="4" fill="#163e39" opacity=".3"/><path d="M11 39Q11 22 24 22Q37 22 37 39Z" fill="#665ba5" stroke="#342e68" stroke-width="2"/><ellipse cx="24" cy="15" rx="11" ry="12" fill="#f4c99d" stroke="#81563d" stroke-width="1.5"/><path d="M12 16Q8 2 24 3Q41 3 36 17L32 10 18 9Z" fill="#5d403c"/><circle cx="20" cy="17" r="1.5" fill="#2b2634"/><circle cx="28" cy="17" r="1.5" fill="#2b2634"/><path d="M20 22Q24 24 28 22" fill="none" stroke="#9c6658" stroke-width="1.5"/>'),
+ tree:svgArt('<ellipse cx="24" cy="42" rx="18" ry="4" fill="#225737" opacity=".35"/><path d="M21 27H27V44H21Z" fill="#805339"/><path d="M24 3L7 28H15L5 35H43L33 28H41Z" fill="#286e4b" stroke="#1e523d" stroke-width="1.5"/><path d="M24 3L16 19 27 14 20 29 36 29" fill="none" stroke="#65ae75" stroke-width="3" opacity=".8"/>'),
+ snowtree:svgArt('<path d="M21 30H27V44H21Z" fill="#735c50"/><path d="M24 2L6 30H14L4 38H44L34 30H42Z" fill="#347b76" stroke="#24585e" stroke-width="2"/><path d="M24 2L15 16H33M11 27H37M8 36H40" stroke="#f8ffff" stroke-width="5" stroke-linecap="round"/>'),
+ rock:svgArt('<path d="M4 38L11 19 24 11 37 19 44 38Z" fill="#87949a" stroke="#626f77" stroke-width="2"/><path d="M24 11L20 25 30 38M11 19L20 25 4 38" fill="none" stroke="#bfcbd0" stroke-width="2"/>'),
+ flower:svgArt('<path d="M24 41V23M24 33L14 29M24 36L34 29" stroke="#328253" stroke-width="3"/><circle cx="24" cy="18" r="6" fill="#f7ca43"/><g fill="#fdf2fc"><circle cx="24" cy="9" r="6"/><circle cx="33" cy="16" r="6"/><circle cx="29" cy="26" r="6"/><circle cx="17" cy="26" r="6"/><circle cx="15" cy="16" r="6"/></g><circle cx="24" cy="18" r="5" fill="#edb94b"/>'),
+ pillar:svgArt('<ellipse cx="24" cy="42" rx="20" ry="4" fill="#76694e" opacity=".3"/><path d="M10 38H38V43H10ZM15 12H33V38H15Z" fill="#c6b994" stroke="#897d64" stroke-width="2"/><path d="M11 8H37V15H11Z" fill="#e0d4ae" stroke="#897d64" stroke-width="2"/><path d="M21 16V36M27 16V36" stroke="#9b9074" stroke-width="2"/>'),
+ lava:svgArt('<path d="M4 34L12 21 23 31 34 17 44 34 39 43H8Z" fill="#e33d23"/><path d="M9 34L18 30 25 36 37 27" stroke="#ffd151" stroke-width="5" fill="none" stroke-linecap="round"/>'),
+ snow:svgArt('<path d="M24 7V41M7 24H41M12 12L36 36M36 12L12 36" stroke="#f9ffff" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="24" r="4" fill="#c6e5f5"/>'),
+ water:svgArt('<path d="M4 18Q11 12 18 18T32 18T46 18M4 31Q11 25 18 31T32 31T46 31" stroke="#d3f6ff" stroke-width="3" fill="none"/>')
+};
+art.house=svgArt('<ellipse cx="24" cy="44" rx="22" ry="4" fill="#35442d" opacity=".35"/><path d="M7 22L24 7 41 22V43H7Z" fill="#e8d6a4" stroke="#886f51" stroke-width="2"/><path d="M3 23L24 3 45 23Z" fill="#ba6752" stroke="#7e433b" stroke-width="2"/><path d="M18 43V29H29V43" fill="#835d49"/><path d="M10 26H16V33H10ZM33 26H39V33H33Z" fill="#8fd0df" stroke="#5e8b9c" stroke-width="1.5"/>');
+
+art.crystalrock=svgArt('<path d="M10 40L6 19 18 4 30 17 41 7 44 39 26 45Z" fill="#8b79db" stroke="#5246a0" stroke-width="2"/><path d="M18 4L23 23 10 40M30 17L23 23 26 45M41 7L34 29 44 39" fill="none" stroke="#d9d2ff" stroke-width="2"/>');
+art.giantmushroom=svgArt('<path d="M19 26H30L33 44H16Z" fill="#f1dbb4" stroke="#a58972" stroke-width="2"/><path d="M3 26Q5 4 24 5Q44 5 46 26Z" fill="#d66eac" stroke="#8d4379" stroke-width="2"/><g fill="#ffe6f4"><circle cx="16" cy="17" r="4"/><circle cx="31" cy="13" r="5"/><circle cx="38" cy="23" r="3"/></g>');
+art.cactus=svgArt('<path d="M18 44V13Q18 4 24 4Q30 4 30 12V44Z M18 29H10Q5 29 5 22V17Q5 12 10 12Q15 12 15 17V23H18 M30 23H35V16Q35 11 40 11Q45 11 45 16V28Q45 34 39 34H30" fill="#43996b" stroke="#276b4a" stroke-width="2"/>');
+art.sunflower=svgArt('<path d="M24 43V22M24 35L13 29M24 33L35 26" stroke="#387d48" stroke-width="3"/><g fill="#ffce4e"><ellipse cx="24" cy="8" rx="5" ry="10"/><ellipse cx="24" cy="8" rx="5" ry="10" transform="rotate(60 24 20)"/><ellipse cx="24" cy="8" rx="5" ry="10" transform="rotate(120 24 20)"/><ellipse cx="24" cy="8" rx="5" ry="10" transform="rotate(180 24 20)"/><ellipse cx="24" cy="8" rx="5" ry="10" transform="rotate(240 24 20)"/><ellipse cx="24" cy="8" rx="5" ry="10" transform="rotate(300 24 20)"/></g><circle cx="24" cy="20" r="8" fill="#86542c"/>');
+
+function guardianPortrait(id){
+ const faces={
+ 10:`<path d="M7 35Q0 21 10 12L4 2 17 12 21 2 25 13 35 3 32 16 45 9 37 25 42 39 24 46Z" fill="#2e8c55" stroke="#185c39" stroke-width="2"/><path d="M8 18L3 4M13 17L16 2M35 17L43 5" stroke="#9f713d" stroke-width="4" stroke-linecap="round"/><path d="M11 23Q24 12 37 23L34 38Q24 45 14 38Z" fill="#77bf74" stroke="#286743" stroke-width="2"/><path d="M16 26L21 28M32 26L27 28" stroke="#163d2e" stroke-width="3"/><path d="M19 36Q24 39 29 36" stroke="#285e3c" fill="none" stroke-width="2"/><path d="M20 8L24 1 28 8" fill="#c2e98a"/>`,
+ 11:`<path d="M8 26L2 8 16 16 20 2 25 13 33 0 34 17 46 7 40 27" fill="#c9f6ff" stroke="#6aa6c8" stroke-width="2"/><path d="M10 22Q24 11 38 22L36 38Q24 46 12 38Z" fill="#d9f7ff" stroke="#75acc9" stroke-width="2"/><path d="M12 25L3 33 13 32M36 25L45 33 35 32" fill="#8bd9f2" stroke="#5192ba" stroke-width="2"/><path d="M17 26L21 28M31 26L27 28" stroke="#2b557c" stroke-width="3"/><path d="M19 36Q24 39 29 36" fill="none" stroke="#619ab6" stroke-width="2"/><path d="M16 13L20 3 24 13 29 2 34 14" fill="#78d7f9" stroke="#398ab5" stroke-width="1.5"/>`,
+ 12:`<path d="M12 24L0 4 5 31 16 29M36 24L48 4 43 31 32 29" fill="#d94e29" stroke="#8b2d24" stroke-width="2"/><path d="M9 16L14 2 20 15 25 0 31 15 38 2 39 21" fill="#373238" stroke="#1c2029" stroke-width="2"/><path d="M10 23Q24 11 38 23L35 39Q24 46 13 39Z" fill="#f47736" stroke="#a83b26" stroke-width="2"/><path d="M16 26L21 28M32 26L27 28" stroke="#54282c" stroke-width="3"/><path d="M20 35L24 38 28 35" fill="#ffde7a"/><path d="M16 41L12 48 24 43 36 48 32 41" fill="#f5b23d"/>`
+ };
+ return svgArt('<ellipse cx="24" cy="46" rx="18" ry="2" fill="#142e36" opacity=".2"/>'+faces[id]);
+}
+function monsterArt(id,evolved=false){
+ if(id>=10&&id<=12)return guardianPortrait(id);
+ const shapes=[
+ // Leafy woodland fox with leaf ears and tail
+ `<path d="M8 32Q-2 18 6 13L17 28" fill="#358953" stroke="#1b603f" stroke-width="2"/><path d="M8 17L7 2 22 14M30 14L43 2 40 19" fill="#4ba95d" stroke="#276c42" stroke-width="2"/><path d="M10 24Q11 13 24 13Q37 13 38 25L36 38Q24 47 12 38Z" fill="#79d17b" stroke="#276c42" stroke-width="2"/><path d="M14 14L19 3 25 14 31 3 36 16" fill="#b2ec83"/><ellipse cx="18" cy="25" rx="2.7" ry="3.4" fill="#203c37"/><ellipse cx="30" cy="25" rx="2.7" ry="3.4" fill="#203c37"/><path d="M21 33L24 35 27 33" stroke="#326b4b" fill="none" stroke-width="2"/><path d="M15 39L11 45M33 39L37 45" stroke="#276c42" stroke-width="3"/>`,
+ // Salamander with flame crest, wings and lizard tail
+ `<path d="M11 34Q-4 42 5 23Q3 36 14 29" fill="#f6ad43" stroke="#b84c36" stroke-width="2"/><path d="M15 17Q9 7 18 2L23 11 29 0 34 15" fill="#ffda62" stroke="#ed6c2f" stroke-width="2"/><path d="M14 23L3 14 9 32M34 23L45 14 39 32" fill="#db633c" stroke="#ad3c36" stroke-width="2"/><path d="M12 22Q24 12 36 22L34 39Q24 45 14 39Z" fill="#f49b51" stroke="#b84c36" stroke-width="2"/><ellipse cx="24" cy="34" rx="8" ry="6" fill="#ffe19a"/><path d="M18 24L22 26M30 24L26 26" stroke="#522f30" stroke-width="2.6" stroke-linecap="round"/><path d="M21 32L24 34 27 32" stroke="#833e34" fill="none" stroke-width="1.7"/><path d="M15 39L12 45M33 39L36 45" stroke="#b84c36" stroke-width="3"/>`,
+ // Water axolotl with gills and fins
+ `<path d="M14 17L5 8 9 20 2 24 13 27M34 17L43 8 39 20 46 24 35 27" fill="#f18fb6" stroke="#b75c9a" stroke-width="2"/><path d="M13 28Q3 34 9 43L18 37" fill="#4d9bd2"/><ellipse cx="24" cy="27" rx="17" ry="15" fill="#78d6ec" stroke="#3685b7" stroke-width="2"/><path d="M15 15Q24 7 33 15" fill="none" stroke="#c5f6ff" stroke-width="5"/><circle cx="18" cy="25" r="2.8" fill="#244968"/><circle cx="30" cy="25" r="2.8" fill="#244968"/><path d="M19 33Q24 38 29 33" fill="none" stroke="#4487a3" stroke-width="2"/><circle cx="12" cy="32" r="3" fill="#f9a8c8"/><circle cx="36" cy="32" r="3" fill="#f9a8c8"/><path d="M17 40L13 45M31 40L35 45" stroke="#3685b7" stroke-width="3"/>`,
+ // Lightning squirrel with jagged lightning tail
+ `<path d="M34 28L47 7 37 12 43 1 28 17 34 18 24 32" fill="#ffde56" stroke="#ae7b2c" stroke-width="2"/><path d="M12 19L8 4 20 13M32 13L40 4 38 22" fill="#b77b38" stroke="#8d5e2d" stroke-width="2"/><ellipse cx="23" cy="29" rx="15" ry="14" fill="#f6d45c" stroke="#a87b35" stroke-width="2"/><ellipse cx="23" cy="36" rx="8" ry="6" fill="#fff0b1"/><circle cx="17" cy="26" r="2.7" fill="#543b35"/><circle cx="29" cy="26" r="2.7" fill="#543b35"/><circle cx="12" cy="32" r="3" fill="#ee9b73"/><circle cx="34" cy="32" r="3" fill="#ee9b73"/><path d="M20 33L23 35 26 33" stroke="#80572e" fill="none" stroke-width="1.7"/><path d="M15 41L12 46M30 41L34 46" stroke="#a87b35" stroke-width="3"/>`,
+ // Snow owl with big wings, tufted head, beak
+ `<path d="M13 26Q0 16 3 38L17 36M35 26Q48 16 45 38L31 36" fill="#a8d6ed" stroke="#6696b7" stroke-width="2"/><path d="M12 19L11 4 22 14M26 14L37 4 36 19" fill="#e9f9ff" stroke="#86b8d1" stroke-width="2"/><ellipse cx="24" cy="27" rx="16" ry="16" fill="#e9f9ff" stroke="#86b8d1" stroke-width="2"/><path d="M13 34Q24 45 35 34" fill="#a8d6ed"/><circle cx="18" cy="25" r="5" fill="#8cb6d1"/><circle cx="30" cy="25" r="5" fill="#8cb6d1"/><circle cx="18" cy="25" r="2.5" fill="#203f5d"/><circle cx="30" cy="25" r="2.5" fill="#203f5d"/><path d="M21 31L24 36 27 31Z" fill="#edb85e"/><path d="M18 41L16 46M30 41L32 46" stroke="#a77c57" stroke-width="2.5"/>`
+,
+ // Crystal-backed armadillo
+ `<path d="M8 29L2 19 15 21 19 5 26 18 36 3 39 22 47 26 37 34" fill="#a39aff" stroke="#5c52ac" stroke-width="2"/><ellipse cx="23" cy="31" rx="17" ry="12" fill="#786bd2" stroke="#4b458d" stroke-width="2"/><path d="M11 28L20 16 29 29 38 19" fill="none" stroke="#d8d0ff" stroke-width="4"/><circle cx="16" cy="31" r="3" fill="#fff"/><circle cx="30" cy="31" r="3" fill="#fff"/><circle cx="16" cy="31" r="1.6" fill="#35305b"/><circle cx="30" cy="31" r="1.6" fill="#35305b"/>`,
+ // Mushroom turtle
+ `<path d="M7 29Q5 8 24 7Q43 8 41 29Z" fill="#e889b2" stroke="#a94f82" stroke-width="2"/><g fill="#fff0e6"><circle cx="16" cy="17" r="4"/><circle cx="31" cy="15" r="4"/></g><ellipse cx="24" cy="32" rx="15" ry="12" fill="#f1d5a6" stroke="#a17c5e" stroke-width="2"/><circle cx="19" cy="31" r="2.5" fill="#433744"/><circle cx="29" cy="31" r="2.5" fill="#433744"/><path d="M20 37Q24 40 28 37" stroke="#aa6d76" fill="none" stroke-width="2"/>`,
+ // Sand fennec
+ `<path d="M8 24L2 2 23 15 43 2 40 25" fill="#dfaa5d" stroke="#9b6c3c" stroke-width="2"/><path d="M9 11L16 20M39 11L32 20" stroke="#f6d8aa" stroke-width="5"/><ellipse cx="24" cy="29" rx="17" ry="14" fill="#edc987" stroke="#a77c45" stroke-width="2"/><path d="M13 38L8 45M35 38L40 45" stroke="#a77c45" stroke-width="3"/><circle cx="18" cy="28" r="2.7" fill="#49382f"/><circle cx="30" cy="28" r="2.7" fill="#49382f"/><path d="M20 35L24 38 28 35" stroke="#94633b" fill="none" stroke-width="2"/>`,
+ // Solar bird
+ `<path d="M11 28L0 9 18 20M37 28L48 9 30 20" fill="#ffb548" stroke="#c8752d" stroke-width="2"/><path d="M15 20L18 4 24 16 32 2 34 22" fill="#ffdf5d" stroke="#cc8c2f" stroke-width="2"/><ellipse cx="24" cy="30" rx="14" ry="14" fill="#ffcb67" stroke="#b77837" stroke-width="2"/><circle cx="19" cy="28" r="2.5" fill="#4e3b31"/><circle cx="29" cy="28" r="2.5" fill="#4e3b31"/><path d="M20 34L24 39 28 34Z" fill="#d47a32"/>`,
+ // Star-horn comet deer
+ `<path d="M10 22L3 6 19 15 24 0 29 15 45 6 38 22" fill="#7ce1ca" stroke="#379c92" stroke-width="2"/><ellipse cx="24" cy="29" rx="15" ry="14" fill="#7bc9bb" stroke="#3d938b" stroke-width="2"/><path d="M17 15L24 4 31 15" fill="#fff0b0"/><circle cx="18" cy="29" r="2.8" fill="#244f57"/><circle cx="30" cy="29" r="2.8" fill="#244f57"/><path d="M20 36Q24 39 28 36" fill="none" stroke="#367d78" stroke-width="2"/>`
+ ];
+ const evolvedForms=[
+ // Forest guardian: antlered quadruped with leaf canopy
+ `<path d="M5 33Q-3 16 9 12L16 24" fill="#347a49"/><path d="M12 17L3 3 16 8 20 0 24 15M36 17L45 3 32 8 28 0 24 15" fill="#4d9c52" stroke="#205e3b" stroke-width="2"/><path d="M9 23Q24 7 39 23L41 37 32 43H16L7 37Z" fill="#3c9258" stroke="#205d40" stroke-width="2"/><path d="M15 16Q24 4 33 16L37 24H11Z" fill="#a0d46b"/><path d="M15 37L11 48M33 37L37 48" stroke="#285d3e" stroke-width="5"/><path d="M17 27L21 29M31 27L27 29" stroke="#fff5bb" stroke-width="3"/><path d="M21 35L24 38 27 35" fill="none" stroke="#194e37" stroke-width="2"/>`,
+ // Blaze dragon: horns, giant wings and long curled tail
+ `<path d="M34 35Q51 43 46 17Q43 32 35 27" fill="#ffbf54" stroke="#b64b32" stroke-width="2"/><path d="M15 22L0 5 3 31 15 32M33 22L48 5 45 31 33 32" fill="#d84c37" stroke="#92342e" stroke-width="2"/><path d="M15 17L11 0 23 12 31 0 34 18" fill="#ffdb65" stroke="#c3532f" stroke-width="2"/><path d="M11 21Q24 11 37 21L38 40 29 46H19L10 40Z" fill="#e96d3d" stroke="#a63c31" stroke-width="2"/><path d="M18 30L22 27M30 30L26 27" stroke="#462a2b" stroke-width="3"/><path d="M20 38Q24 42 28 38" stroke="#ffda82" stroke-width="2" fill="none"/>`,
+ // Ocean guardian: sea serpent with fins and crest
+ `<path d="M10 33Q-2 39 6 47L16 41M37 33Q50 42 44 47L34 41" fill="#318cb5"/><path d="M10 19L0 5 4 25 0 34 12 30M38 19L48 5 44 25 48 34 36 30" fill="#5db2d4" stroke="#2379a4" stroke-width="2"/><path d="M17 16L19 1 25 13 32 1 34 17" fill="#b2f5f3" stroke="#368eb3" stroke-width="2"/><path d="M10 24Q24 7 38 24L37 40Q24 49 11 40Z" fill="#388fb8" stroke="#23698e" stroke-width="2"/><path d="M14 32Q24 39 34 32" fill="none" stroke="#b7efff" stroke-width="4"/><circle cx="18" cy="26" r="3" fill="#fff"/><circle cx="30" cy="26" r="3" fill="#fff"/><circle cx="18" cy="26" r="1.5" fill="#1c526d"/><circle cx="30" cy="26" r="1.5" fill="#1c526d"/>`,
+ // Thunder lion: mane and zigzag tail
+ `<path d="M36 36L47 24 39 23 47 5 29 24" fill="#ffe65c" stroke="#9d7129" stroke-width="2"/><path d="M9 17L4 5 17 10 24 0 31 10 44 5 39 17 47 26 38 31 40 43 24 40 8 43 10 31 1 26Z" fill="#d69b35" stroke="#936029" stroke-width="2"/><path d="M13 19Q24 10 35 19L36 35Q24 45 12 35Z" fill="#ffe17b" stroke="#b17c32" stroke-width="2"/><path d="M17 27L21 29M31 27L27 29" stroke="#5c452f" stroke-width="3"/><path d="M20 35L24 38 28 35" fill="none" stroke="#805a30" stroke-width="2"/>`,
+ // Ice wolf: long muzzle, pointed ears, ice spikes
+ `<path d="M8 19L3 0 19 13 29 13 45 0 40 19" fill="#b1e3f1" stroke="#679ebd" stroke-width="2"/><path d="M7 25L0 16 5 34 0 41 15 40M41 25L48 16 43 34 48 41 33 40" fill="#81c1e2"/><path d="M12 20L17 5 24 16 31 5 36 20" fill="#f3ffff"/><path d="M10 24Q24 10 38 24L35 38 24 47 13 38Z" fill="#d9f4ff" stroke="#6b9ebc" stroke-width="2"/><path d="M15 28L21 30M33 28L27 30" stroke="#315474" stroke-width="3"/><path d="M20 36L24 40 28 36" fill="#477493"/><path d="M16 41L11 48M32 41L37 48" stroke="#76accb" stroke-width="4"/>`,
+ // Crystal lion with angular gem armor
+ `<path d="M3 24L10 7 18 15 24 0 31 15 41 5 45 23 48 34 38 43 24 46 9 43 0 33Z" fill="#7664d3" stroke="#473e93" stroke-width="2"/><path d="M9 20L16 2 24 18 34 1 40 21" fill="#b6b0ff" stroke="#5d54b1" stroke-width="2"/><path d="M12 25L24 15 36 25 33 39 24 44 15 39Z" fill="#d1caff" stroke="#7164b7" stroke-width="2"/><path d="M16 29L21 31M32 29L27 31" stroke="#44386c" stroke-width="3"/><path d="M21 37L24 39 27 37" stroke="#7164b7" fill="none" stroke-width="2"/>`,
+ // Mushroom king: giant umbrella, legs and crown
+ `<path d="M6 28Q-1 8 24 6Q49 8 42 28Z" fill="#ba4e83" stroke="#85345f" stroke-width="2"/><path d="M14 9L14 0 21 5 24 -2 28 5 36 0 35 10" fill="#ffd76b" stroke="#aa7b2e" stroke-width="2"/><circle cx="13" cy="19" r="5" fill="#ffe8d7"/><circle cx="34" cy="18" r="5" fill="#ffe8d7"/><path d="M10 29Q24 34 38 29L34 43H14Z" fill="#f6e5bd" stroke="#a17d62" stroke-width="2"/><path d="M16 42L11 48M32 42L37 48" stroke="#8c705a" stroke-width="5"/><circle cx="19" cy="35" r="2.5" fill="#4b3640"/><circle cx="29" cy="35" r="2.5" fill="#4b3640"/><path d="M20 40Q24 43 28 40" stroke="#a86b77" fill="none" stroke-width="2"/>`,
+ // Desert dragon: fennec horns, broad sand wings
+ `<path d="M14 25L0 9 4 35 15 31M34 25L48 9 44 35 33 31" fill="#bb8648" stroke="#906336" stroke-width="2"/><path d="M9 19L2 0 21 13 27 13 46 0 39 19" fill="#e8bd74" stroke="#9c6c3a" stroke-width="2"/><path d="M16 15L20 3 25 15 30 3 34 15" fill="#ffe6b0"/><path d="M10 23Q24 12 38 23L36 41 24 47 12 41Z" fill="#d8a45f" stroke="#956936" stroke-width="2"/><path d="M17 28L21 30M31 28L27 30" stroke="#58402e" stroke-width="3"/><path d="M21 37L24 40 27 37" stroke="#fff0c7" fill="none" stroke-width="2"/>`,
+ // Solar phoenix: massive wings, feathered tail
+ `<path d="M12 27L0 4 2 22 0 36 16 33M36 27L48 4 46 22 48 36 32 33" fill="#f39a35" stroke="#b35b2a" stroke-width="2"/><path d="M16 34L10 48 22 40 24 50 28 40 39 48 32 34" fill="#e86e31"/><path d="M14 19L14 3 22 12 25 -1 30 12 39 3 35 19" fill="#ffe66a" stroke="#ca832f" stroke-width="2"/><path d="M12 22Q24 11 36 22L34 39Q24 46 14 39Z" fill="#ffbd48" stroke="#bb7130" stroke-width="2"/><circle cx="19" cy="28" r="2.5" fill="#513c2e"/><circle cx="29" cy="28" r="2.5" fill="#513c2e"/><path d="M20 34L24 40 28 34Z" fill="#c7652d"/>`,
+ // Star-horn: full deer antlers and luminous chest
+ `<path d="M12 19L4 0 15 7 17 0 22 15M36 19L44 0 33 7 31 0 26 15" fill="none" stroke="#59bba8" stroke-width="4" stroke-linecap="round"/><path d="M10 22L4 13 16 16M38 22L44 13 32 16" fill="#58a999"/><path d="M10 25Q24 10 38 25L35 42 24 47 13 42Z" fill="#70cbb7" stroke="#318b82" stroke-width="2"/><path d="M24 15L28 23 37 24 30 30 32 38 24 33 16 38 18 30 11 24 20 23Z" fill="#fff2ad" opacity=".85"/><circle cx="18" cy="29" r="2.5" fill="#244d55"/><circle cx="30" cy="29" r="2.5" fill="#244d55"/><path d="M20 40Q24 43 28 40" fill="none" stroke="#317c73" stroke-width="2"/>`
+ ];
+ return svgArt('<ellipse cx="24" cy="46" rx="19" ry="3" fill="#132b31" opacity=".25"/>'+(evolved?evolvedForms[id%10]:shapes[id%shapes.length]));
+}
+function monsterPanelArt(id,evolved=false){return '<span class="monster-art">'+monsterArt(id,evolved)+'</span>'}
+
+// DOM-based renderer: works even when Android local-file Canvas rendering fails.
+const world=document.getElementById('world');
+const tileColors={cliff:'#827d70',snow:'#dceaf2',snowtree:'#c3dce8',volcano:'#8e685b',lava:'#e7672d',ruins:'#d1bd88',pillar:'#b9a57a',grass:'#87bf70',town:'#c7ce9b',forest:'#5b995c',lake:'#86c3a5',mountain:'#a8aa94',path:'#e0c792',water:'#59aed2',rock:'#898c8e',tree:'#488653',flower:'#a0cf76',crystal:'#8f9ec5',crystalrock:'#8f9ec5',mushroom:'#647d78',giantmushroom:'#647d78',desert:'#dfc185',cactus:'#dfc185',meadow:'#92c67a',sunflower:'#92c67a'};
+const groundUnder={cliff:'mountain',rock:'mountain',tree:'forest',snowtree:'snow',pillar:'ruins',flower:'grass',crystalrock:'crystal',giantmushroom:'mushroom',cactus:'desert',sunflower:'meadow',lava:'volcano'};
+function groundColor(t){return tileColors[groundUnder[t]||t]}
+const decorations={snow:'❄️',snowtree:'🌲',lava:'🔥',pillar:'🏛️',tree:'🌲',rock:'🪨',flower:'🌼',water:'〰️'};
+let lastRender='';
+// V11: standalone WebGL 3D terrain renderer. No external library or network required.
+let cameraYaw=.72,cameraPitch=.65,cameraDistance=15;
+const sceneCanvas=document.getElementById('scene3d');
+const gl=sceneCanvas.getContext('webgl',{alpha:false,antialias:false,powerPreference:'high-performance'});
+let glProgram,glBuffer,glActorBuffer,glPosition,glColor,glMatrix;
+if(gl){
+ const vs='attribute vec3 p;attribute vec3 c;uniform mat4 m;varying vec3 v;void main(){gl_Position=m*vec4(p,1.);v=c;}';
+ const fs='precision mediump float;varying vec3 v;void main(){gl_FragColor=vec4(v,1.);}';
+ function shader(type,source){const sh=gl.createShader(type);gl.shaderSource(sh,source);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh}
+ glProgram=gl.createProgram();gl.attachShader(glProgram,shader(gl.VERTEX_SHADER,vs));gl.attachShader(glProgram,shader(gl.FRAGMENT_SHADER,fs));gl.linkProgram(glProgram);gl.useProgram(glProgram);
+ glPosition=gl.getAttribLocation(glProgram,'p');glColor=gl.getAttribLocation(glProgram,'c');glMatrix=gl.getUniformLocation(glProgram,'m');glBuffer=gl.createBuffer();glActorBuffer=gl.createBuffer();gl.enable(gl.DEPTH_TEST);gl.enable(gl.CULL_FACE);
+}
+function vecSub(a,b){return a.map((v,i)=>v-b[i])}
+function vecCross(a,b){return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]}
+function vecNorm(a){const n=Math.hypot(...a)||1;return a.map(v=>v/n)}
+function matMul(a,b){let r=new Float32Array(16);for(let j=0;j<4;j++)for(let i=0;i<4;i++)for(let k=0;k<4;k++)r[j*4+i]+=a[k*4+i]*b[j*4+k];return r}
+function makeCamera(w,h){
+ const target=[0,0,0],eye=[Math.sin(cameraYaw)*Math.cos(cameraPitch)*cameraDistance,Math.sin(cameraPitch)*cameraDistance,Math.cos(cameraYaw)*Math.cos(cameraPitch)*cameraDistance];
+ const f=vecNorm(vecSub(target,eye)),right=vecNorm(vecCross(f,[0,1,0])),up=vecCross(right,f);
+ const view=new Float32Array([right[0],up[0],-f[0],0,right[1],up[1],-f[1],0,right[2],up[2],-f[2],0,-right.reduce((s,v,i)=>s+v*eye[i],0),-up.reduce((s,v,i)=>s+v*eye[i],0),f.reduce((s,v,i)=>s+v*eye[i],0),1]);
+ // The matrix above is row-first camera basis stored in column-major layout.
+ const aspect=w/h,near=.1,far=110,q=1/Math.tan(54*Math.PI/360/2);
+ const proj=new Float32Array([q/aspect,0,0,0,0,q,0,0,0,0,(far+near)/(near-far),-1,0,0,2*far*near/(near-far),0]);
+ // Smoothly follow the hero without rebuilding the terrain every animation frame.
+ const ox=state.x-visualHero.x,oz=state.y-visualHero.y;
+ view[12]+=right[0]*ox+right[2]*oz;
+ view[13]+=up[0]*ox+up[2]*oz;
+ view[14]+=-f[0]*ox-f[2]*oz;
+ return matMul(proj,view);
+}
+function hexRgb(s){if(!s||s[0]!=='#')return [.4,.7,.4];if(s.length===4)return [1,2,3].map(i=>parseInt(s[i]+s[i],16)/255);return [1,3,5].map(i=>parseInt(s.slice(i,i+2),16)/255)}
+function buildGeometry(){
+ const data=[];
+ function tri(a,b,c,col){for(const p of [a,b,c])data.push(p[0],p[1],p[2],...col)}
+ function quad(a,b,c,d,col){tri(a,b,c,col);tri(a,c,d,col)}
+ function box(x,y,z,sx,sy,sz,color){let [r,g,b]=hexRgb(color),shade=k=>[Math.min(1,r*k),Math.min(1,g*k),Math.min(1,b*k)];
+ const x0=x-sx/2,x1=x+sx/2,y0=y,y1=y+sy,z0=z-sz/2,z1=z+sz/2;
+ quad([x0,y1,z0],[x0,y1,z1],[x1,y1,z1],[x1,y1,z0],shade(1.05));
+ quad([x0,y0,z1],[x0,y0,z0],[x1,y0,z0],[x1,y0,z1],shade(.62));
+ quad([x0,y0,z0],[x0,y1,z0],[x1,y1,z0],[x1,y0,z0],shade(.72));
+ quad([x1,y0,z1],[x1,y1,z1],[x0,y1,z1],[x0,y0,z1],shade(.83));
+ quad([x1,y0,z0],[x1,y1,z0],[x1,y1,z1],[x1,y0,z1],shade(.7));
+ quad([x0,y0,z1],[x0,y1,z1],[x0,y1,z0],[x0,y0,z0],shade(.8));
+ }
+ function pyramid(x,y,z,size,height,col){let top=[x,y+height,z],r=size/2,a=[x-r,y,z-r],b=[x+r,y,z-r],c=[x+r,y,z+r],d=[x-r,y,z+r],color=hexRgb(col);tri(a,top,b,color);tri(b,top,c,color.map(v=>v*.9));tri(c,top,d,color.map(v=>v*.8));tri(d,top,a,color.map(v=>v*.95))}
+ const rad=13;
+ for(let y=Math.max(1,state.y-rad);y<=Math.min(MH-2,state.y+rad);y++)for(let x=Math.max(1,state.x-rad);x<=Math.min(MW-2,state.x+rad);x++){
+ const t=map[y][x],ft=terrainFeatures.get(x+','+y),xx=x-state.x,zz=y-state.y;
+ const base=groundColor(t),isWater=t==='water'||ft==='river'||ft==='waterfall';
+ const elevated=ft==='plateau'||ft==='cliff'||ft==='stairs'? .65:0;
+ box(xx,-.32,zz,1.012,.32+elevated,1.012,base);
+ if(isWater)box(xx,.015,zz,.99,.025,.99,'#3199d2');
+ if(ft==='bridge'){box(xx,.16,zz,.96,.13,.96,'#9e6a38');for(const side of [-.38,.38])box(xx+side,.25,zz,.07,.33,.95,'#b78a54')}
+ if(ft==='stairs')for(let i=0;i<4;i++)box(xx,.04+i*.12,zz-.36+i*.23,.94,.12,.24,'#c1b6a0');
+ if(ft==='waterfall')for(let j=0;j<3;j++)box(xx-.32+j*.32,.03,zz,.22,.5,.15,'#7de2fa');
+ if(['tree','snowtree'].includes(t)){box(xx,.02,zz,.18,.75,.18,'#755139');pyramid(xx,.6,zz,.92,1.45,t==='snowtree'?'#e1f2e9':'#287d4a')}
+ else if(t==='rock'||t==='cliff'){box(xx,.02,zz,.82,.58,.8,'#86847d');pyramid(xx,.6,zz,.75,.35,'#bbb6a6')}
+ else if(t==='lava'){box(xx,.02,zz,.83,.14,.8,'#d84e19');pyramid(xx,.16,zz,.68,.44,'#ff9d29')}
+ else if(t==='pillar'){box(xx,.02,zz,.34,1.55,.34,'#b4a78d');box(xx,1.5,zz,.56,.18,.56,'#d3c6a9')}
+ else if(t==='crystalrock'){pyramid(xx,.02,zz,.78,1.65,'#ad79ee');pyramid(xx+.24,.02,zz+.19,.42,1.08,'#72e5ff')}
+ else if(t==='giantmushroom'){box(xx,.02,zz,.17,.75,.17,'#f7e5cf');pyramid(xx,.65,zz,.95,.72,'#dd63ac')}
+ else if(t==='cactus'){box(xx,.02,zz,.27,1.25,.27,'#399b65');box(xx+.22,.5,zz,.45,.18,.16,'#399b65')}
+ else if(t==='flower'||t==='sunflower'){box(xx,.02,zz,.055,.3,.055,'#43834c');box(xx,.32,zz,.23,.09,.23,t==='sunflower'?'#f3c74d':'#e5a9e6')}
+ if(t==='town'&&((x===3&&y===5)||(x===12&&y===5)||(x===4&&y===10))){box(xx,.02,zz,.92,1.25,.85,'#e5c69c');pyramid(xx,1.26,zz,1.3,.95,'#b44e3d')}
+ }
+ // Town buildings: roof, walls, windows, and a visible entrance.
+ for(const b of townFacilities){
+  const xx=b.x-state.x,zz=b.y-state.y;
+  if(Math.abs(xx)>18||Math.abs(zz)>18)continue;
+  box(xx,.02,zz,1.8,1.6,1.7,b.color);
+  box(xx,1.62,zz,2.15,.20,2.05,b.id==='shop'?'#9b493b':b.id==='heal'?'#2d7f72':'#65569a');
+  pyramid(xx,1.80,zz,2.3,.9,b.id==='shop'?'#b75c46':b.id==='heal'?'#49b6a0':'#8d7bca');
+  box(xx,.03,zz+.87,.58,1.16,.08,'#483d38'); // door
+  box(xx-.60,.9,zz+.89,.36,.44,.08,'#a9eaff');
+  box(xx+.60,.9,zz+.89,.36,.44,.08,'#a9eaff');
+  box(xx,.02,zz+1.17,.83,.10,.65,'#e4c88f'); // entrance step
+ }
+ return new Float32Array(data)
+}
+
+// V13: Procedural true 3D actor models (triangles, not flat sprites).
+// Distinct heads, tails, wings, ears, horns and silhouettes; all orbit with camera.
+let actorTick=0;
+// Facing angles use world direction: the models face toward negative Z at angle zero.
+let heroFacing=0,heroLastStep=0,companionFacing=0,companionLastStep=0;
+function facingFor(dx,dy){return Math.atan2(-dx,-dy)}
+// Roaming monsters keep a small home territory and walk only on valid land.
+for(const e of entities)if(e.kind==='wild'){
+ e.homeX=e.x;e.homeY=e.y;e.facing=Math.random()*Math.PI*2;e.lastStep=0;
+}
+function roamWild(){
+ if(active)return;
+ const now=performance.now();
+ for(const e of entities){
+  if(e.kind!=='wild'||e.alive===false||Math.random()>.32)continue;
+  const dirs=[[0,-1],[1,0],[0,1],[-1,0]];
+  const [dx,dy]=dirs[Math.floor(Math.random()*dirs.length)];
+  const nx=e.x+dx,ny=e.y+dy;
+  if(Math.abs(nx-e.homeX)>5||Math.abs(ny-e.homeY)>5||blocked(nx,ny))continue;
+  if(entities.some(other=>other!==e&&other.alive!==false&&other.x===nx&&other.y===ny))continue;
+  if(nx===state.x&&ny===state.y)continue;
+  motion.entities.set(e,tweenPosition(e.x,e.y,nx,ny,420));e.x=nx;e.y=ny;e.facing=facingFor(dx,dy);e.lastStep=now;
+ }
+}
+setInterval(roamWild,1250);
+function actorGeometry(){
+ const v=[];const tint=(c,k=1)=>hexRgb(c).map(n=>Math.min(1,n*k));
+ function tri(a,b,c,col){for(const p of [a,b,c])v.push(...p,...col)}
+ function quad(a,b,c,d,col){tri(a,b,c,col);tri(a,c,d,col)}
+ function cube(x,y,z,sx,sy,sz,color){const c=tint(color),shade=k=>c.map(n=>n*k),a=x-sx/2,b=x+sx/2,l=z-sz/2,r=z+sz/2,d=y,u=y+sy;
+ quad([a,u,l],[a,u,r],[b,u,r],[b,u,l],shade(1));quad([a,d,r],[a,d,l],[b,d,l],[b,d,r],shade(.55));quad([a,d,l],[a,u,l],[b,u,l],[b,d,l],shade(.73));quad([b,d,r],[b,u,r],[a,u,r],[a,d,r],shade(.85));quad([b,d,l],[b,u,l],[b,u,r],[b,d,r],shade(.7));quad([a,d,r],[a,u,r],[a,u,l],[a,d,l],shade(.8));}
+ function spike(x,y,z,r,h,color){const a=[x-r,y,z-r],b=[x+r,y,z-r],c=[x+r,y,z+r],d=[x-r,y,z+r],top=[x,y+h,z],co=tint(color);tri(a,top,b,co);tri(b,top,c,co.map(n=>n*.9));tri(c,top,d,co.map(n=>n*.8));tri(d,top,a,co)}
+ function ball(x,y,z,r,color){const a=[x,y+r,z],b=[x,y-r,z],p=[[x+r,y,z],[x,y,z+r],[x-r,y,z],[x,y,z-r]],co=tint(color);for(let i=0;i<4;i++){tri(p[i],a,p[(i+1)%4],co.map(n=>n*(.8+i*.05)));tri(p[(i+1)%4],b,p[i],co.map(n=>n*.7))}}
+ // Rounded, low-poly anatomical forms for human characters.
+ function ellipsoid(x,y,z,rx,ry,rz,color,segments=7,rings=5){
+  const co=tint(color);for(let j=0;j<rings;j++){const a=-Math.PI/2+j*Math.PI/rings,b=-Math.PI/2+(j+1)*Math.PI/rings;
+   for(let i=0;i<segments;i++){const u=i*2*Math.PI/segments,w=(i+1)*2*Math.PI/segments;
+    const p=(lat,lon)=>[x+rx*Math.cos(lat)*Math.cos(lon),y+ry*Math.sin(lat),z+rz*Math.cos(lat)*Math.sin(lon)];
+    const shade=co.map(n=>n*(.79+.21*Math.cos((u+w)/2)));
+    quad(p(a,u),p(b,u),p(b,w),p(a,w),shade);
+   }
+  }
+ }
+ function limb(ax,ay,az,bx,by,bz,r1,r2,color){
+  const n=6,co=tint(color),dx=bx-ax,dy=by-ay,dz=bz-az,len=Math.hypot(dx,dy,dz)||1;
+  let ux=-dz/len,uy=0,uz=dx/len;if(Math.hypot(ux,uz)<.05){ux=1;uz=0}const ul=Math.hypot(ux,uy,uz);ux/=ul;uz/=ul;
+  let vx=dy*uz/len,vy=(dz*ux-dx*uz)/len,vz=-dy*ux/len;
+  for(let i=0;i<n;i++){const t=i*2*Math.PI/n,q=(i+1)*2*Math.PI/n;
+   const pt=(x,y,z,r,ang)=>[x+r*(ux*Math.cos(ang)+vx*Math.sin(ang)),y+r*(uy*Math.cos(ang)+vy*Math.sin(ang)),z+r*(uz*Math.cos(ang)+vz*Math.sin(ang))];
+   quad(pt(ax,ay,az,r1,t),pt(ax,ay,az,r1,q),pt(bx,by,bz,r2,q),pt(bx,by,bz,r2,t),co.map(v=>v*(.75+.25*Math.cos(t))));
+  }
+ }
+ function rotateActor(start,X,Z,angle){
+  const sn=Math.sin(angle),cs=Math.cos(angle);
+  for(let i=start;i<v.length;i+=6){const x=v[i]-X,z=v[i+2]-Z;v[i]=X+x*cs+z*sn;v[i+2]=Z-x*sn+z*cs;}
+ }
+ function model(x,z,id,evolved=false,npc=false,hero=false,scale=1,phase=0,facing=0,moving=false){
+ const startVertex=v.length;
+ // Species-specific gait: flyers hover and flap, runners alternate their feet,
+ // and heavier guardians use a slow grounded stride. Idle actors remain still.
+ const flying=!hero&&!npc&&([1,2,8].includes(id%10)||id===12)&& (evolved||id===8||id===12);
+ const heavy=!hero&&!npc&&(id===10||id===11);
+ const stride=actorTick*(heavy?3.2:flying?4.5:6)+phase;
+ const wob=moving?(flying?Math.sin(stride)*.10:Math.abs(Math.sin(stride))*(heavy?.025:.045)):0,base=mounted&&hero?(state.party[0]?.id>=10?1.18:.84):.05;
+ const X=x-state.x,Z=z-state.y;const primary=hero?'#e3ad5e':npc?'#8ac6ae':types[id]?.color||'#76c8a5';
+ const sz=scale*(evolved?1.22:1);let yy=base+wob;
+ if(hero){
+  // Classic V12 block-style adventurer, restored for the player only.
+  // Keep V20.1 optimization, movement interpolation, and mount positioning.
+  const step=moving?Math.sin(actorTick*6+phase)*.14:0;
+  const H=mounted?.79:1;
+  const C=(a,b,c,d,e,f,g)=>cube(a,b,c,d,e,f,g);
+  C(X-.16*H,yy+.03*H,Z-.02*H+step*H,.17*H,.42*H,.22*H,'#364a71');
+  C(X+.16*H,yy+.03*H,Z-.02*H-step*H,.17*H,.42*H,.22*H,'#364a71');
+  C(X,yy+.43*H,Z,.52*H,.62*H,.32*H,primary);
+  C(X,yy+.46*H,Z+.23*H,.38*H,.45*H,.18*H,'#536a7c');
+  C(X-.37*H,yy+.48*H,Z,.19*H,.48*H,.21*H,'#f2bd8b');
+  C(X+.37*H,yy+.48*H,Z,.19*H,.48*H,.21*H,'#f2bd8b');
+  ball(X,yy+1.22*H,Z,.34*H,'#eebd91');
+  C(X,yy+1.44*H,Z-.06*H,.58*H,.18*H,.49*H,'#483342');
+  ball(X-.13*H,yy+1.22*H,Z-.29*H,.045*H,'#283544');
+  ball(X+.13*H,yy+1.22*H,Z-.29*H,.045*H,'#283544');
+  spike(X,yy+1.51*H,Z,.38*H,.18*H,'#b44c46');
+  rotateActor(startVertex,X,Z,facing);return;
+ }
+ if(npc){
+  // Human proportions: articulated tapered limbs, neck, shoulders, curved torso,
+  // oval head, ears, nose and hairstyle. No block-shaped Minecraft anatomy.
+  const walk=moving?Math.sin(actorTick*6+phase):0;
+  const armSwing=walk*.15,legSwing=walk*.16;
+  const skin=npc?'#c58d6e':'#e9b58e',shirt=npc?'#438e80':'#d6a35d',pants=npc?'#3a596a':'#374d77';
+  const H=mounted&&hero?.79:1;
+  // Leg swing only when moving; stationary knees and feet remain planted.
+  for(const side of [-1,1]){
+   const hipX=X+side*.14*H,hipY=yy+.86*H;
+   const kneeZ=Z-.02*H+side*legSwing*H,ankleZ=Z-.08*H+side*legSwing*1.4*H;
+   ellipsoid(hipX,hipY-.09*H,Z,.145*H,.18*H,.16*H,pants,8,5);
+   limb(hipX,hipY-.08*H,Z,hipX+side*.015*H,yy+.48*H,kneeZ,.13*H,.105*H,pants);
+   ellipsoid(hipX+side*.015*H,yy+.48*H,kneeZ,.11*H,.11*H,.11*H,pants,8,5);
+   limb(hipX+side*.015*H,yy+.48*H,kneeZ,hipX+side*.025*H,yy+.12*H,ankleZ,.105*H,.08*H,pants);
+   ellipsoid(hipX+side*.025*H,yy+.11*H,ankleZ-.07*H,.13*H,.10*H,.21*H,'#343b45',8,5);
+   // Shoulder, elbow, forearm and hand, opposite swing from legs.
+   const sx=X+side*.29*H,sy=yy+1.36*H,ez=Z-side*armSwing*H;
+   ellipsoid(sx,sy,Z,.14*H,.16*H,.15*H,shirt,8,5);
+   limb(sx,sy,Z,sx+side*.065*H,yy+1.06*H,ez,.125*H,.092*H,shirt);
+   ellipsoid(sx+side*.065*H,yy+1.06*H,ez,.09*H,.09*H,.09*H,skin,8,5);
+   limb(sx+side*.065*H,yy+1.06*H,ez,sx+side*.06*H,yy+.86*H,ez-.035*H,.09*H,.065*H,skin);
+   ellipsoid(sx+side*.06*H,yy+.83*H,ez-.035*H,.075*H,.10*H,.075*H,skin,8,5);
+  }
+  // Anatomical taper: pelvis, rib cage and shoulders.
+  ellipsoid(X,yy+.89*H,Z,.24*H,.17*H,.16*H,pants);
+  ellipsoid(X,yy+1.20*H,Z,.29*H,.38*H,.19*H,shirt,12,8);
+  ellipsoid(X,yy+1.52*H,Z,.105*H,.14*H,.105*H,skin,8,5);
+  // Backpack fitted behind the torso, not a huge cube.
+  ellipsoid(X,yy+1.20*H,Z+.19*H,.23*H,.28*H,.12*H,'#536a7c',8,6);
+  // Rounded face and skull, with a soft jawline and natural facial placement.
+  ellipsoid(X,yy+1.81*H,Z-.015*H,.235*H,.29*H,.21*H,skin,12,9);
+  for(const side of [-1,1]){
+   ellipsoid(X+side*.23*H,yy+1.80*H,Z-.015*H,.055*H,.085*H,.055*H,skin,8,5);
+   ellipsoid(X+side*.085*H,yy+1.84*H,Z-.212*H,.023*H,.032*H,.012*H,'#26323d',8,5);
+   ellipsoid(X+side*.085*H,yy+1.915*H,Z-.207*H,.049*H,.008*H,.010*H,npc?'#56453d':'#352b29',10,5);
+  }
+  ellipsoid(X,yy+1.745*H,Z-.219*H,.026*H,.052*H,.028*H,skin,12,8);
+  ellipsoid(X,yy+1.66*H,Z-.196*H,.07*H,.015*H,.014*H,'#9d615b',8,5);
+   // Young-adult hairstyle: short tapered sides, layered crown and a swept fringe.
+   const hair=npc?'#4b5142':'#262329',hairLight=npc?'#626a50':'#383137';
+   ellipsoid(X,yy+2.016*H,Z+.042*H,.239*H,.094*H,.203*H,hair,18,10);
+   for(const side of [-1,1]){
+    ellipsoid(X+side*.205*H,yy+1.962*H,Z+.052*H,.038*H,.074*H,.129*H,hair,12,8);
+    ellipsoid(X+side*.115*H,yy+2.070*H,Z+.008*H,.104*H,.048*H,.120*H,hairLight,14,8);
+   }
+   // Side-swept bangs stop above the eyes; asymmetry gives a more mature look.
+   ellipsoid(X-.090*H,yy+2.012*H,Z-.142*H,.112*H,.042*H,.077*H,hair,14,8);
+   ellipsoid(X+.095*H,yy+2.038*H,Z-.132*H,.099*H,.036*H,.071*H,hair,14,8);
+  if(hero){
+   // Tapered sideburns, textured crown and a defined young-adult jaw.
+   for(const side of [-1,1]){
+    ellipsoid(X+side*.211*H,yy+1.934*H,Z-.035*H,.030*H,.067*H,.095*H,hair,12,8);
+    ellipsoid(X+side*.132*H,yy+2.090*H,Z+.042*H,.083*H,.033*H,.090*H,hairLight,12,7);
+   }
+   ellipsoid(X,yy+1.621*H,Z-.062*H,.142*H,.057*H,.145*H,skin,14,8);
+  }
+  rotateActor(startVertex,X,Z,facing);return;
+ }
+ // Distinct 3D legendary silhouettes: antlered tree guardian, crowned ice wolf, volcanic dragon.
+ if(id>=10&&id<=12){
+   const k=id-10,wing=moving?Math.sin(stride)*.12:0;
+   const main=['#278e60','#a1e9f6','#de4631'][k],accent=['#a2df75','#e9ffff','#ffbc43'][k];
+   const S=sz;
+   for(const side of [-1,1])for(const front of [-1,1])cube(X+side*.35*S,yy+.02*S,Z+front*.4*S+(moving&&!flying?Math.sin(stride+side*front)*.10*S:0),.25*S,.6*S,.26*S,k===0?'#78513b':main);
+   ball(X,yy+.95*S,Z,.8*S,main);ball(X,yy+1.58*S,Z-.55*S,.52*S,main);
+   for(const side of [-1,1])ball(X+side*.24*S,yy+1.63*S,Z-.96*S,.09*S,'#132d3a');
+   if(k===0){ // Forest guardian: branched tree antlers, leafy crown and trunk tail
+     for(const side of [-1,1]){spike(X+side*.4*S,yy+1.92*S,Z-.55*S,.2*S,1.2*S,'#855c38');spike(X+side*.78*S,yy+2.35*S,Z-.48*S,.17*S,.72*S,'#8d673f');ball(X+side*.7*S,yy+2.65*S,Z-.48*S,.34*S,accent);}
+     ball(X,yy+2.22*S,Z,.58*S,'#4fa65b');spike(X,yy+1.05*S,Z+.8*S,.32*S,1.1*S,'#855c38');
+   }else if(k===1){ // Ice king: long icy ears, crown, frosty mane and crystal spikes
+     for(const side of [-1,1]){spike(X+side*.37*S,yy+1.93*S,Z-.58*S,.23*S,.94*S,accent);spike(X+side*.65*S,yy+1.25*S,Z+.18*S,.3*S,.8*S,'#8bd5ff');}
+     for(let i=-1;i<=1;i++)spike(X+i*.32*S,yy+2.05*S,Z-.4*S,.2*S,(i===0?.9:.65)*S,'#d8faff');
+     ball(X,yy+1.04*S,Z+.3*S,.7*S,'#d4f6ff');spike(X,yy+1.12*S,Z+.8*S,.28*S,1*S,'#b4ecff');
+   }else{ // Volcano king: sweeping wings, horns, back spikes, flaming tail
+     for(const side of [-1,1]){spike(X+side*(.94+wing)*S,yy+1.25*S,Z+.12*S,.65*S,1.7*S,'#e87832');spike(X+side*.4*S,yy+1.96*S,Z-.5*S,.22*S,.85*S,'#4c3034');}
+     for(let i=0;i<4;i++)spike(X,yy+1.43*S,Z+(.2+i*.27)*S,.22*S,.54*S,accent);
+     spike(X,yy+.8*S,Z+1.1*S,.35*S,1.4*S,main);ball(X,yy+1.55*S,Z-1.03*S,.23*S,accent);
+   }
+   rotateActor(startVertex,X,Z,facing);return;
+ }
+ // V20: anatomy-led creature models. Rounded torsos, articulated legs, muzzles,
+ // species-specific ears, feathers, fins, shells and tails; no cube feet.
+ const kind=id%10,S=sz,flyer=kind===4||kind===8||(kind===1&&evolved);
+ const isBird=kind===4||kind===8, aquatic=kind===2;
+ const bodyY=yy+(isBird?.68:.54)*S,headY=yy+(isBird?1.05:.92)*S;
+ const bodyColor=primary;
+ const eye='#202c38',light='#f2e9dc';
+ const sw=moving?Math.sin(stride)*.12*S:0;
+ // Body volume varies by species: foxes are slender, turtles broad, birds upright.
+ ellipsoid(X,bodyY,Z, (kind===6?.54:.48)*S,(isBird?.49:.36)*S,(kind===6?.52:.61)*S,bodyColor,12,8);
+ if(kind===6){ // Mushroom turtle: domed shell, rim, cap and stalk markings.
+   ellipsoid(X,bodyY+.22*S,Z,.54*S,.40*S,.52*S,'#b97c9a',12,8);
+   ellipsoid(X,bodyY+.46*S,Z,.62*S,.17*S,.60*S,'#d979aa',12,7);
+   for(const side of [-1,1])for(const f of [-1,1])ellipsoid(X+side*.30*S,yy+.17*S,Z+f*.39*S,.18*S,.19*S,.19*S,'#e9cba7',9,6);
+   for(const side of [-1,1])ellipsoid(X+side*.30*S,bodyY+.52*S,Z-.20*S,.09*S,.025*S,.09*S,'#fff1df',8,5);
+ }else if(!isBird){
+   for(const side of [-1,1])for(const front of [-1,1]){
+     const zz=Z+front*.37*S+(moving?sw*side*front:0);
+     ellipsoid(X+side*.28*S,yy+.24*S,zz,.16*S,.26*S,.18*S,kind===5?'#8170c8':bodyColor,9,6);
+     ellipsoid(X+side*.28*S,yy+.08*S,zz-.045*S,.18*S,.10*S,.23*S,kind===7?'#e6c48b':bodyColor,9,5);
+   }
+ }else{
+   for(const side of [-1,1]){limb(X+side*.19*S,yy+.40*S,Z,X+side*.20*S,yy+.10*S,Z-.08*S,.065*S,.045*S,kind===4?'#839bb4':'#c87532');
+     ellipsoid(X+side*.20*S,yy+.07*S,Z-.14*S,.11*S,.055*S,.18*S,kind===4?'#8ea7b9':'#d28738',8,5);}
+ }
+ // Head and facial expression: genuine protruding snout/beak and inset eyes.
+ ellipsoid(X,headY,Z-.44*S,(kind===7?.33:.37)*S,(isBird?.34:.32)*S,.35*S,bodyColor,12,8);
+ for(const side of [-1,1]){
+   ellipsoid(X+side*.17*S,headY+.055*S,Z-.745*S,.067*S,.082*S,.040*S,'#f5f4e9',10,6);
+   ellipsoid(X+side*.17*S,headY+.052*S,Z-.780*S,.036*S,.055*S,.022*S,eye,10,6);
+   ellipsoid(X+side*.18*S,headY+.075*S,Z-.801*S,.013*S,.018*S,.010*S,'#ffffff',7,4);
+ }
+ if(isBird){
+   spike(X,headY-.13*S,Z-.80*S,.16*S,.23*S,kind===4?'#c1a56b':'#ffb546');
+   for(const side of [-1,1]){
+     const wingY=bodyY+.18*S+(moving?Math.sin(stride+side)*.12*S:0);
+     ellipsoid(X+side*.51*S,wingY,Z+.02*S,.46*S,.13*S,.29*S,kind===4?'#c0e4f4':'#f4b44c',11,6);
+     for(let j=0;j<3;j++)ellipsoid(X+side*(.64+j*.12)*S,wingY-.06*S,Z+(.12-j*.13)*S,.18*S,.055*S,.14*S,kind===4?'#d6f2fa':'#f9d46b',8,5);
+   }
+   for(let j=-1;j<=1;j++)ellipsoid(X+j*.13*S,bodyY-.04*S,Z+.56*S,.10*S,.12*S,.38*S,kind===4?'#b7e3f4':'#f7a94b',9,6);
+   for(const side of [-1,1])spike(X+side*.19*S,headY+.22*S,Z-.40*S,.11*S,.35*S,kind===4?'#e5f8ff':'#ffe67e');
+ }else{
+   ellipsoid(X,headY-.14*S,Z-.73*S,.20*S,.13*S,(kind===2?.22:.28)*S,kind===2?'#91e5ee':kind===7?'#f6d9a8':bodyColor,10,6);
+   ellipsoid(X,headY-.15*S,Z-1.00*S,.085*S,.062*S,.055*S,kind===2?'#dc8cb5':'#363a3c',9,5);
+ }
+ // Distinct anatomy per species.
+ if([0,3,7,9].includes(kind)){
+   for(const side of [-1,1]){
+     ellipsoid(X+side*.27*S,headY+.27*S,Z-.43*S,.13*S,(kind===7?.40:.26)*S,.14*S,bodyColor,9,6);
+     ellipsoid(X+side*.27*S,headY+.30*S,Z-.54*S,.065*S,(kind===7?.29:.17)*S,.055*S,kind===7?'#f3d3ac':'#d2b5a4',8,5);
+   }
+ }
+ if(kind===0){ // Leaf fox: layered fur and bushy leaf-tail.
+   ellipsoid(X,bodyY+.05*S,Z+.72*S,.25*S,.26*S,.45*S,'#438f57',11,7);
+   for(let j=0;j<3;j++)ellipsoid(X+(j-1)*.13*S,bodyY+.15*S,Z+.92*S,.11*S,.24*S,.20*S,'#71b85b',8,5);
+   ellipsoid(X,headY-.24*S,Z-.53*S,.29*S,.13*S,.22*S,'#e2d7b7',10,6);
+ }else if(kind===1){ // Fire salamander: smooth reptilian limbs, dorsal flame crest.
+   for(let j=0;j<4;j++)spike(X,bodyY+.26*S,Z+(.32-j*.22)*S,.13*S,(.30+j*.04)*S,'#ffcf64');
+   ellipsoid(X,bodyY-.10*S,Z+.83*S,.15*S,.14*S,.51*S,'#dd6742',10,7);
+   if(evolved)for(const side of [-1,1])ellipsoid(X+side*.58*S,bodyY+.30*S,Z+.12*S,.53*S,.10*S,.35*S,'#e76b3f',10,6);
+ }else if(kind===2){ // Axolotl: six external feathery gills and finned tail.
+   for(const side of [-1,1])for(let j=0;j<3;j++)ellipsoid(X+side*(.37+j*.10)*S,headY+(.15-j*.14)*S,Z-.46*S,.16*S,.055*S,.08*S,'#e9a0be',8,5);
+   ellipsoid(X,bodyY+.05*S,Z+.75*S,.13*S,.24*S,.52*S,'#65bcd6',10,7);
+   ellipsoid(X,bodyY+.17*S,Z+.85*S,.045*S,.27*S,.46*S,'#a7ecf5',9,5);
+ }else if(kind===3){ // Electric squirrel: cheek pouches and curling lightning tail.
+   for(const side of [-1,1])ellipsoid(X+side*.30*S,headY-.14*S,Z-.59*S,.14*S,.14*S,.16*S,'#f1ce7a',9,6);
+   ellipsoid(X+.34*S,bodyY+.38*S,Z+.68*S,.22*S,.24*S,.36*S,'#eec553',10,6);
+   ellipsoid(X+.45*S,bodyY+.72*S,Z+.90*S,.25*S,.35*S,.20*S,'#f7d761',10,7);
+ }else if(kind===5){ // Crystal armadillo: overlapping faceted shell gems.
+   ellipsoid(X,bodyY+.20*S,Z,.52*S,.35*S,.54*S,'#7565c7',12,7);
+   for(let j=-2;j<=2;j++)spike(X+j*.20*S,bodyY+.33*S,Z+.03*S,.13*S,(.40+(2-Math.abs(j))*.09)*S,j%2?'#a0e9f9':'#c1aaff');
+ }else if(kind===7){ // Desert fennec: oversized ears and fluffy tail.
+   ellipsoid(X,bodyY+.17*S,Z+.73*S,.25*S,.22*S,.42*S,'#edc78a',10,7);
+ }else if(kind===9){ // Star deer: slender antlers and chest markings.
+   for(const side of [-1,1]){
+     limb(X+side*.19*S,headY+.25*S,Z-.40*S,X+side*.37*S,headY+.85*S,Z-.32*S,.065*S,.028*S,'#b8eee1');
+     limb(X+side*.29*S,headY+.58*S,Z-.36*S,X+side*.56*S,headY+.72*S,Z-.33*S,.040*S,.020*S,'#b8eee1');
+   }
+   ellipsoid(X,bodyY+.06*S,Z-.42*S,.20*S,.26*S,.11*S,'#b5f4e3',10,6);
+ }
+ if(evolved){ // Evolved monsters get more mature musculature and species details.
+   ellipsoid(X,bodyY+.10*S,Z,.39*S,.19*S,.45*S,bodyColor,11,6);
+   if(kind===0||kind===7)for(const side of [-1,1])spike(X+side*.21*S,headY+.47*S,Z-.41*S,.11*S,.38*S,kind===0?'#7ad078':'#e8b876');
+ }
+ rotateActor(startVertex,X,Z,facing);
+ }
+ // Wild monsters, follower and hero/mount, same world positions as the old sprites.
+ for(const e of entities){if(e.alive===false||Math.abs(e.x-state.x)>15||Math.abs(e.y-state.y)>15)continue;const ep=tweenPoint(motion.entities.get(e),visualNow);model(ep?ep.x:e.x,ep?ep.y:e.y,e.id||0,e.kind==='boss',e.kind==='npc',false,e.kind==='boss'?1.22:1,e.x*.3+e.y*.2,e.facing||0,e.kind==='wild'&&performance.now()-(e.lastStep||0)<430)}
+ if(state.party.length&&!mounted){const cp=companionPosition();const fp=tweenPoint(motion.follower,visualNow)||cp;if(Math.hypot(fp.x-visualHero.x,fp.y-visualHero.y)>.15){const mon=state.party[0];model(fp.x,fp.y,mon.id,mon.evolved,false,false,1.05,1,companionFacing,performance.now()-companionLastStep<250)}}
+ if(mounted&&state.party.length){const mon=state.party[0];model(visualHero.x,visualHero.y,mon.id,true,false,false,mon.id>=10?.72:1.03,2,heroFacing,performance.now()-heroLastStep<240);model(visualHero.x,visualHero.y,0,false,false,true,.78,0,heroFacing,performance.now()-heroLastStep<240)}
+ else model(visualHero.x,visualHero.y,0,false,false,true,1,0,heroFacing,performance.now()-heroLastStep<240);
+ return new Float32Array(v)
+}
+
+let geoCache=null,geoX=-1,geoY=-1,frameMatrix=null;
+function renderWorld(){
+ try{
+ visualNow=performance.now();const hp=tweenPoint(motion.hero,visualNow);visualHero=hp?{x:hp.x,y:hp.y}:{x:state.x,y:state.y};
+ const w=Math.max(1,innerWidth),h=Math.max(1,innerHeight),dpr=Math.min(devicePixelRatio||1,1.0);
+ if(gl){if(sceneCanvas.width!==Math.round(w*dpr)||sceneCanvas.height!==Math.round(h*dpr)){sceneCanvas.width=Math.round(w*dpr);sceneCanvas.height=Math.round(h*dpr)}gl.viewport(0,0,sceneCanvas.width,sceneCanvas.height);gl.clearColor(.59,.79,.85,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+ if(geoX!==state.x||geoY!==state.y){geoCache=buildGeometry();geoX=state.x;geoY=state.y;gl.bindBuffer(gl.ARRAY_BUFFER,glBuffer);gl.bufferData(gl.ARRAY_BUFFER,geoCache,gl.STATIC_DRAW)}
+ frameMatrix=makeCamera(w,h);gl.useProgram(glProgram);gl.uniformMatrix4fv(glMatrix,false,frameMatrix);gl.bindBuffer(gl.ARRAY_BUFFER,glBuffer);gl.enableVertexAttribArray(glPosition);gl.enableVertexAttribArray(glColor);gl.vertexAttribPointer(glPosition,3,gl.FLOAT,false,24,0);gl.vertexAttribPointer(glColor,3,gl.FLOAT,false,24,12);gl.drawArrays(gl.TRIANGLES,0,geoCache.length/6);
+ actorTick+=.07;const actors=actorGeometry();gl.bindBuffer(gl.ARRAY_BUFFER,glActorBuffer);gl.bufferData(gl.ARRAY_BUFFER,actors,gl.DYNAMIC_DRAW);gl.vertexAttribPointer(glPosition,3,gl.FLOAT,false,24,0);gl.vertexAttribPointer(glColor,3,gl.FLOAT,false,24,12);gl.disable(gl.BLEND);gl.depthMask(true);gl.disable(gl.CULL_FACE);gl.drawArrays(gl.TRIANGLES,0,actors.length/6);gl.enable(gl.CULL_FACE);
+ }else{document.getElementById('cameraHelp').textContent='このブラウザはWebGLに対応していません';}
+ world.innerHTML=''; // All characters are rendered as real 3D meshes in WebGL.
+ if(!renderWorld.lastHud||visualNow-renderWorld.lastHud>280){document.getElementById('zone').textContent=zone();document.getElementById('stats').textContent='🐾 '+state.party.length+' | Lv.'+state.party[0].level;document.getElementById('coins').textContent='🪙 '+state.coins+' 🔮 '+state.balls;drawMinimap();updateRideButton();renderWorld.lastHud=visualNow;}
+ }catch(err){document.getElementById('cameraHelp').textContent='3D描画エラー: '+err.message;console.error(err)}
+}
+// One-finger camera orbit and two-finger zoom, independent from the D-pad.
+let pointers=new Map(),lastPinch=0;
+sceneCanvas.addEventListener('pointerdown',e=>{sceneCanvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY})});
+sceneCanvas.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;let old=pointers.get(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===1){cameraYaw-=(e.clientX-old.x)*.009;cameraPitch=Math.max(.16,Math.min(1.35,cameraPitch+(e.clientY-old.y)*.007))}else if(pointers.size===2){let ps=[...pointers.values()],distance=Math.hypot(ps[0].x-ps[1].x,ps[0].y-ps[1].y);if(lastPinch)cameraDistance=Math.max(9,Math.min(31,cameraDistance*lastPinch/distance));lastPinch=distance}});
+function releasePointer(e){pointers.delete(e.pointerId);lastPinch=0}sceneCanvas.addEventListener('pointerup',releasePointer);sceneCanvas.addEventListener('pointercancel',releasePointer);
+sceneCanvas.addEventListener('wheel',e=>{e.preventDefault();cameraDistance=Math.max(9,Math.min(31,cameraDistance+Math.sign(e.deltaY)))},{passive:false});
+function drawMinimap(){const c=document.getElementById('minimap');const ctx=c.getContext('2d');if(!ctx)return;const sx=c.width/MW,sy=c.height/MH;for(let y=0;y<MH;y+=2)for(let x=0;x<MW;x+=2){ctx.fillStyle=groundColor(map[y][x]);ctx.fillRect(x*sx,y*sy,sx*2+1,sy*2+1)}// Boss markers: large gold circles visible on the minimap.
+ for(const e of entities){if(e.kind!=='boss'||state.bossWins[bossChapters[e.bossIndex].id])continue;
+ ctx.fillStyle=bossAvailable(e.bossIndex)?'#ffd34d':'#8b7c9c';ctx.strokeStyle='#30210b';ctx.lineWidth=1.5;
+ ctx.beginPath();ctx.arc((e.x+.5)*sx,(e.y+.5)*sy,5,0,Math.PI*2);ctx.fill();ctx.stroke();}
+ ctx.fillStyle='#ff264e';ctx.beginPath();ctx.arc((state.x+.5)*sx,(state.y+.5)*sy,4,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#fff';ctx.stroke()}placeBosses();renderWorld();discoverZone();
+// Convert on-screen arrow directions into world-grid steps using the current camera yaw.
+// This keeps ▲ moving toward the top of the display even after rotating the camera.
+function cameraRelativeStep(dir){
+ const a=cameraYaw, forward=[-Math.sin(a),-Math.cos(a)],right=[Math.cos(a),-Math.sin(a)];
+ const v=dir==='up'?forward:dir==='down'?forward.map(n=>-n):dir==='right'?right:right.map(n=>-n);
+ // Select the closest of eight grid directions; diagonals are supported by move().
+ const threshold=.382683432365;
+ return [Math.abs(v[0])<threshold?0:Math.sign(v[0]),Math.abs(v[1])<threshold?0:Math.sign(v[1])];
+}
+function moveScreenDirection(dir){const [dx,dy]=cameraRelativeStep(dir);move(dx,dy)}
+function tick(){if(active)return;let now=Date.now();if(now-cool<(mounted?75:185))return;let dir=keys.up?'up':keys.down?'down':keys.left?'left':keys.right?'right':null;if(dir){moveScreenDirection(dir);cool=now}}setInterval(tick,30);
+// 3D animation loop: render interpolated movement at display refresh rate.
+let lastVisualFrame=0;
+function animateSmooth(now){requestAnimationFrame(animateSmooth);if(now-lastVisualFrame<33)return;lastVisualFrame=now;renderWorld()}
+requestAnimationFrame(animateSmooth);document.querySelectorAll('[data-dir]').forEach(b=>{let k=b.dataset.dir;b.addEventListener('pointerdown',e=>{e.preventDefault();keys[k]=true;moveScreenDirection(k);cool=Date.now()});['pointerup','pointercancel','pointerleave'].forEach(ev=>b.addEventListener(ev,()=>keys[k]=false))});document.getElementById('action').addEventListener('click',interact);addEventListener('keydown',e=>{let k=({ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right'})[e.key];if(k){keys[k]=true;e.preventDefault()}if(e.code==='Space'){interact();e.preventDefault()}if(e.key==='r'||e.key==='R'){toggleRide();e.preventDefault()}if(e.key==='Escape'&&active)closeGameModal()});addEventListener('keyup',e=>{let k=({ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right'})[e.key];if(k)keys[k]=false});
+</script><script>if("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost")){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}</script></body></html>
